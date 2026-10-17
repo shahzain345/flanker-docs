@@ -15,7 +15,7 @@ export default defineConfig({
         discord: "https://discord.gg/yRyTAHmvxJ",
       },
       editLink: {
-        baseUrl: "https://github.com/REPLACE_ME/flanker-docs/edit/main/",
+        baseUrl: "https://github.com/shahzain345/flanker-docs/edit/main/",
       },
       sidebar: [
         {

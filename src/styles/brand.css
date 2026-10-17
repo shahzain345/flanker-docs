@@ -1,0 +1,33 @@
+/* flanker brand accents for Starlight. Cool slate-blue, dark-first, flat.
+   Starlight exposes its palette as CSS custom properties; we override the
+   accent ramp and a few surface tones so the docs read like flanker. */
+
+:root {
+  /* Accent (slate-blue, close to the bot's embed colour #5C6B8A). */
+  --sl-color-accent-low: #1b2433;
+  --sl-color-accent: #5c6b8a;
+  --sl-color-accent-high: #c3cde0;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-accent-low: #1b2433;
+  --sl-color-accent: #6f80a3;
+  --sl-color-accent-high: #ccd5e6;
+
+  /* Deep, neutral surfaces to match the dashboard's dark glass feel. */
+  --sl-color-bg: #0c0e13;
+  --sl-color-bg-nav: #0c0e13;
+  --sl-color-bg-sidebar: #0e1118;
+  --sl-color-gray-7: #11141c;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #dfe4ee;
+  --sl-color-accent: #475571;
+  --sl-color-accent-high: #1d2432;
+}
+
+/* Keep code and command syntax legible and understated. */
+.sl-markdown-content code {
+  font-size: 0.9em;
+}

@@ -1,0 +1,52 @@
+---
+title: flanker
+description: Documentation for flanker, the all-in-one Discord security, moderation and management bot.
+template: splash
+hero:
+  tagline: Security, moderation, and everything else your server needs, in one bot.
+  actions:
+    - text: Get started
+      link: /start/getting-started/
+      icon: right-arrow
+    - text: Add flanker
+      link: https://flanker.wtf
+      icon: external
+      variant: minimal
+    - text: Dashboard
+      link: https://flanker.wtf/dashboard
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## What flanker does
+
+<CardGrid>
+  <Card title="Stops nukes" icon="shield">
+    Antinuke watches for mass bans and deletions, dangerous permission grants,
+    webhook and emoji spam and rogue bots, punishes whoever trips a limit, and
+    undoes the damage.
+  </Card>
+  <Card title="Stops raids" icon="seti:lock">
+    Antiraid reacts in real time with lockdown, captcha verification and
+    removal of raiders before they touch your server.
+  </Card>
+  <Card title="Full moderation" icon="approve-check">
+    Ban, timeout, jail, purge and warnings, all logged with a searchable case
+    history and staff notes.
+  </Card>
+  <Card title="Everything else" icon="puzzle">
+    Tickets, applications, welcome messages, logging, vanity roles,
+    VoiceMaster, leveling, giveaways, music, a starboard and more.
+  </Card>
+</CardGrid>
+
+## Jump in
+
+<CardGrid>
+  <LinkCard title="Getting started" href="/start/getting-started/" description="Invite flanker and send your first command." />
+  <LinkCard title="Invite & setup" href="/start/setup/" description="Permissions, prefix and the fastest way to configure a server." />
+  <LinkCard title="Security" href="/guides/security/" description="Set up antinuke, antiraid and the honeypot." />
+  <LinkCard title="Command reference" href="/commands/general/" description="Every command, with syntax, permissions and examples." />
+</CardGrid>

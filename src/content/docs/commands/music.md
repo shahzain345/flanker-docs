@@ -21,19 +21,19 @@ Plays music from YouTube, SoundCloud, Spotify, Apple Music and more in your voic
 
 ## queue
 
-The music queue.
+The music queue, with who added each song. Under it, pick a song to move it up, down or to the top, or remove it, and remove every song one member added. Anyone in the voice channel can remove their own songs.
 
 **Permission:** DJ role if set
 
 **Configure on the [dashboard](https://flanker.wtf/dashboard):** Music
 
-- **`queue`**  
-  Shows the queue.
-- **`queue remove (position)`**  
-  Removes a track.
-  *DJ role if set*
+- **`queue [page]`**  
+  Shows the queue with its controls.
+- **`queue remove (position or member)`**  
+  Removes a song, or every song the member added.
+  *DJ role if set*  ·  example: `queue remove @member`
 - **`queue move (position) (new position)`**  
-  Moves a track.
+  Moves a song.
   *DJ role if set*
 - **`queue clear`**  
   Empties the queue.

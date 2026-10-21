@@ -75,6 +75,9 @@ Stops nukes: mass bans and kicks, deleted channels and roles, dangerous permissi
 - **`antinuke backupowner (member/off)`**  
   Sets a backup owner who must approve anything that weakens antinuke, so a hacked owner account can't switch it off.
   *Server owner*  ·  example: `antinuke backupowner @friend`
+- **`antinuke backup [on/off]`**  
+  flanker's backup role: Administrator, directly under flanker's role, held only by flanker. Re-inviting flanker with fewer permissions can't disarm it then. Only the owner and backup owner can delete it, take it off flanker or remove its permissions; anyone else who tries is punished. Setup asks before adding it.
+  *Server owner*  ·  example: `antinuke backup on`
 - **`antinuke event (duration) [--ban N] [--kick N] [--channel N] [--role N] [--webhook N] [--emoji N] [--permissions N]`**  
   Raises limits for a while, for events where staff need to act fast. They go back to normal when it ends.
   *Server owner or antinuke admin*  ·  example: `antinuke event 2h --ban 10`

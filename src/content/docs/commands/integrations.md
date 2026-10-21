@@ -7,6 +7,23 @@ sidebar:
 
 Commands are shown without a prefix. Use your server's prefix (default `,`) or mention flanker. `(round)` parameters are required, `[square]` are optional.
 
+## valorant
+
+Valorant: a card with a player's rank, RR, peak, their last 6 competitive matches (result, agent, map, K/D/A, score and RR change) and the player card they have equipped. Also `val`. Look anyone up on the website too.
+
+**Permission:** Anyone
+
+- **`valorant (name#tag)`**  
+  Shows a player's card.
+  example: `valorant markhor#dnd`
+- **`valorant [@member]`**  
+  Your linked account's card, or a member's.
+- **`valorant link (name#tag)`**  
+  Links your Riot ID so `valorant` on its own shows you.
+  example: `valorant link markhor#dnd`
+- **`valorant unlink`**  
+  Removes your linked Riot ID.
+
 ## lastfm
 
 Last.fm: now playing, top artists and who knows an artist in this server.

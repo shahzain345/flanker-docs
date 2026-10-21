@@ -13,11 +13,14 @@ Marry, adopt and grow a family tree with people from any server with flanker. Yo
 
 **Permission:** Anyone
 
-- **`family tree [member]`**  
-  Draws the family tree. Also `tree` and `familytree`.
-  example: `family tree`
-- **`family marry (member)`**  
-  Proposes. They get Accept and Decline buttons. Also `marry` and `propose`.; marry @someone
+- **`family tree [member] [up/down] [light]`**  
+  Draws the family tree. `up` shows the line of ancestors, `down` children and grandchildren, `light` a light version. Also `tree` and `familytree`.
+  example: `family tree @someone down`
+- **`family profile [member]`**  
+  A card with someone's partner, parent, children, family name, generation, pets and family rank. Also `familyprofile`.
+  example: `family profile`
+- **`family marry (member) [vow]`**  
+  Proposes. They get Accept and Decline buttons. Anything after the member is your vow, kept on the marriage card. Also `marry` and `propose`.; marry @someone will you be my duo
 - **`family divorce`**  
   Ends your marriage. Also `divorce`.
 - **`family adopt (member)`**  
@@ -29,17 +32,48 @@ Marry, adopt and grow a family tree with people from any server with flanker. Yo
 - **`family emancipate`**  
   Leaves your parent's family. Also `emancipate` and `runaway`.
 - **`family partner [member]`**  
-  Shows who someone is married to. Also `partner`.
+  The marriage card: both pictures, the vow, days together and the next anniversary. Also `partner` and `marriage`.
 - **`family parent [member]`**  
   Shows someone's parent. Also `parent`.
 - **`family children [member]`**  
   Lists someone's children (up to 15). Also `children`.
 - **`family siblings [member]`**  
   Lists someone's siblings. Also `siblings`.
+- **`family grandparents [member]`**  
+  Lists someone's grandparents.
+- **`family grandchildren [member]`**  
+  Lists someone's grandchildren.
+- **`family cousins [member]`**  
+  Lists someone's cousins.
+- **`family aunts [member]`**  
+  Lists someone's aunts and uncles. Also `family uncles`.
+- **`family nieces [member]`**  
+  Lists someone's nieces and nephews. Also `family nephews`.
 - **`family relationship (member) [member]`**  
   How two people are related. Also `relationship`.; relationship @a @b
 - **`family size [member]`**  
   How many people are in someone's family. Also `familysize`.
+- **`family top [global]`**  
+  The biggest families in this server, or on all of flanker with `global`.
+  example: `family top global`
+- **`family name (name)`**  
+  Names your family, like "Khan". Only the head of the family (someone with no parent) can, and everyone below shares it. `clear` removes it.
+  example: `family name Khan`
+- **`family colour (colour)`**  
+  Your family's colour on trees and cards: a hex code or red, pink, rose, orange, gold, green, teal, blue, ice, purple or white. Head of the family only. `clear` resets it.
+  example: `family colour #6fa8ff`
+- **`family pet adopt (kind) (name)`**  
+  Adopts a pet that shows on your tree and profile (up to 5). Kinds: cat, dog, bunny, hamster, bird, fish, fox, turtle, frog, snake, horse, dragon.
+  example: `family pet adopt cat Mochi`
+- **`family pet rename (name) (new name)`**  
+  Renames one of your pets.
+- **`family pet release (name)`**  
+  Lets one of your pets go.
+- **`family pets [member]`**  
+  Lists someone's pets.
+- **`family anniversaries (channel or off)`**  
+  Posts couples' anniversaries (both must be in this server): every month for the first year, then every year.
+  *Manage Server*  ·  example: `family anniversaries #couples`
 - **`family block (member)`**  
   Stops someone from sending you proposals.
 - **`family unblock (member)`**  

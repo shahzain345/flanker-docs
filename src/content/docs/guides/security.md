@@ -1,60 +1,35 @@
 ---
-title: Security
-description: Set up antinuke, antiraid and the honeypot to protect your server.
+title: Security overview
+description: Choose the protection that matches the problem, then follow a complete setup guide.
 ---
 
-flanker's security is its headline feature. Set this up early, before you open
-the server to members.
+Flanker separates destructive server actions, coordinated raids and trap-channel detection. Configure each feature for its purpose. Discord permissions and role hierarchy still limit what any bot can do.
 
-## Antinuke
+## Choose a setup guide
 
-Antinuke stops server-destroying actions: mass bans and kicks, deleted channels
-and roles, dangerous permission grants, webhook and emoji spam, vanity changes
-and rogue bot adds. When someone crosses a limit, flanker punishes them and
-undoes the damage where possible.
+| Feature | What it handles | Start here |
+| --- | --- | --- |
+| Antinuke | Destructive moderation, role, channel and permission actions. | [Set up antinuke](/guides/antinuke/) |
+| Antiraid | Join waves, coordinated chat activity and resource bursts. | [Set up antiraid](/guides/antiraid/) |
+| Honeypot | Accounts that post in a clearly marked trap channel. | [Set up honeypot](/guides/honeypot/) |
+| Filters | Content rules, words, links and configured spam checks. | [Security commands](/commands/security/#filter) |
 
-- `,antinuke setup` turns it on. **Beginner** applies the recommended protection
-  in one step; **advanced** adds optional hardening as yes/no questions.
-- `,antinuke config` shows every module, its limit and punishment, the antinuke
-  admins and trusted bots.
-- `,antinuke <module> (on/off) [--threshold N] [--do punishment]` tunes one
-  module. Modules include ban, kick, channel, role, webhook, emoji, vanity,
-  botadd and permissions. Punishments: warn, jail, kick, ban, stripstaff,
-  timeout.
+## Access matters
 
-:::tip
-Add your real, trusted bots as trusted so their normal actions never trip
-antinuke. See `,help antinuke` and the [Security commands](/commands/security/).
-:::
+Initial antinuke setup is owner-only. Supported security settings use actual owner, antinuke-admin or real Discord permission checks. Fake permissions never unlock security settings, and ordinary Flanker Admin status does not grant antinuke configuration access.
 
-## Antiraid
+Keep Flanker’s role above roles and members it must manage. Give it access to its alert and log channels. Read specific missing-permission errors rather than repeatedly retrying an action that Discord is rejecting.
 
-Antiraid detects coordinated joins and raid behaviour and reacts in real time.
+## Understand recovery before an incident
 
-- `,antiraid` configures raid thresholds and responses.
-- `,raid` controls manual raid mode.
-- Responses include lockdown, captcha verification for new members, and
-  removing raiders.
+**Panic mode** belongs to antinuke. It pauses dangerous role permissions and bulk work. The owner ends it, with backup-owner approval when configured. Failed role restoration is reported and saved for a later retry; it does not keep panic active indefinitely. See [panic recovery](/guides/antinuke/#5-understand-panic-mode).
 
-See [Antiraid commands](/commands/security/) for the full option set.
+**Raid mode** belongs to antiraid. It can restrict channel access and hold suspicious members for verification. Staff review held members and use antiraid recovery to reopen access. See [raid recovery](/guides/antiraid/#4-review-members-and-end-raid-mode).
 
-## Honeypot
+**Reset** is different from recovery. Antinuke and antiraid resets clear settings and are owner-only commands. Team site admins have a separate dashboard exception. Do not reset protection merely to dismiss an unexplained error.
 
-A honeypot is a trap channel. Anyone who posts in it is acting like a raider or
-spammer, so flanker can catch and punish them automatically.
+## Role-grant safety
 
-- `,honeypot` sets up the trap channel and the action taken on anyone who posts.
+Autoroles, button and reaction roles, custom commands and bulk role tools cannot grant dangerous permissions. The direct single-member role-command exception is restricted to the owner, backup owner and antinuke admins, subject to hierarchy and other checks. Ordinary staff and fake permissions do not unlock it.
 
-## Fake permissions and filters
-
-- `,fakepermissions` grants command access that only flanker honours, so staff
-  can use flanker without being handed real, abusable Discord permissions.
-- `,filter` configures word, link, invite and spam filters that delete or act on
-  rule-breaking messages.
-
-## Recovery
-
-When something does get through, flanker helps you recover: deleted channels can
-be restored with their settings and recent messages, and removed roles can be
-given back. See the backup and channel commands in the
-[reference](/commands/security/).
+For individual options, see the [complete security reference](/commands/security/) and [moderation guide](/guides/moderation/).

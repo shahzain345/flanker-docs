@@ -69,3 +69,19 @@ commands stay in sync.
 What flanker stores, why, how long, and how to request deletion is explained in
 the [privacy policy](https://flanker.wtf/privacy). Production data is encrypted
 at rest.
+
+## Custom-command role conditions
+
+In the custom-command builder, **Has role?** accepts several role chips. The condition succeeds when the selected person has any one of the chosen roles, so one command can be available to several staff teams. Existing one-role blocks continue to work. This condition does not bypass flanker's permission or dangerous-role grant checks.
+
+## Site admin server activity
+
+Flanker's site admins can review **Admin > Server activity** for observed bot additions and removals, with server names, IDs, times, filters and pagination. This is separate from a server's Flanker Admin role. History starts when event recording was introduced; it is not a complete backfill of older servers.
+
+## Focus on one task
+
+The current dashboard uses separate setup and activity views where a module needs both. Settings are grouped by what they affect, with search for longer configuration areas. Hidden views keep their local drafts while you switch tasks; save changes explicitly before leaving the page or relying on the configuration.
+
+**Welcome** starts with channels: select one to preview, then edit its message. **Tickets** separates panels, server defaults and blocked members. Select one panel, then choose its message/posting or ticket types. Activity has open and recently closed tickets. See [welcome setup](/guides/welcome/) and [ticket setup](/guides/tickets/).
+
+Security status and permission checks still apply. A dashboard’s appearance does not grant access to settings your account cannot change.

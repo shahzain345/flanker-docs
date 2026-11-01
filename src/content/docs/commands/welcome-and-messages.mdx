@@ -1,0 +1,51 @@
+---
+title: Welcome and messages commands
+description: Flanker welcome and messages commands, syntax, permissions and examples.
+sidebar:
+  order: 5
+---
+
+import CommandReference from '../../../components/CommandReference.astro';
+import commands from '../../../data/commands.json';
+
+Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.
+
+## welcome
+
+<CommandReference command={commands.find(command => command.name === "welcome")} />
+
+## leave
+
+<CommandReference command={commands.find(command => command.name === "leave")} />
+
+## boosts
+
+<CommandReference command={commands.find(command => command.name === "boosts")} />
+
+## greet
+
+<CommandReference command={commands.find(command => command.name === "greet")} />
+
+## autorole
+
+<CommandReference command={commands.find(command => command.name === "autorole")} />
+
+## pingonjoin
+
+<CommandReference command={commands.find(command => command.name === "pingonjoin")} />
+
+## bumpreminder
+
+<CommandReference command={commands.find(command => command.name === "bumpreminder")} />
+
+## timer
+
+<CommandReference command={commands.find(command => command.name === "timer")} />
+
+## autoresponder
+
+<CommandReference command={commands.find(command => command.name === "autoresponder")} />
+
+## reaction
+
+<CommandReference command={commands.find(command => command.name === "reaction")} />

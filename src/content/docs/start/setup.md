@@ -10,11 +10,14 @@ sidebar:
 flanker's security features act on the whole server, so they need real
 permissions to work and to reverse an attack:
 
-- **Administrator** is the simplest and is recommended, especially for antinuke
-  and antiraid, which recreate channels, restore roles and remove attackers.
-- If you prefer narrower permissions, flanker needs at least: Manage Server,
-  Manage Roles, Manage Channels, Manage Webhooks, Ban Members, Kick Members,
-  Moderate Members, Manage Messages, View Audit Log, and Read/Send messages.
+Grant the specific permissions needed by the features you enable. For security,
+these include Manage Roles, Manage Channels, Manage Webhooks, Ban Members,
+Kick Members, Moderate Members, Manage Messages and View Audit Log. Flanker
+also needs View Channel, Send Messages and Read Message History in channels it uses.
+Other features may need rights such as Attach Files, Embed Links, Connect or Speak.
+
+Flanker reports the exact missing permissions when an action is denied, for example
+“I’m missing permissions: `BAN_MEMBERS`”. The server invite currently requests Administrator. Individual commands report the specific missing permission rather than asking you to grant Administrator. If you configure narrower permissions manually, grant the permissions required by each enabled feature.
 
 :::caution
 Role hierarchy still applies. flanker can only act on roles and members below

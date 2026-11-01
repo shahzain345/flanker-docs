@@ -1,0 +1,60 @@
+---
+title: Set up honeypot
+description: Create the trap channel, choose consequences and verify alert delivery.
+---
+import SetupFlow from '../../../components/SetupFlow.astro';
+import SettingsPreview from '../../../components/SettingsPreview.astro';
+
+A honeypot is a visible, clearly marked channel that members should leave alone. Accounts that post everywhere can be caught when they send a message there. It complements antiraid; it is not a replacement for join or chat detection.
+
+## 1. Create the trap
+
+Use an account with **real Manage Server**. Open **Honeypot** in the [dashboard](https://flanker.wtf/servers) and select **Create #honeypot**, or run:
+
+```text
+,honeypot setup
+```
+
+Flanker creates the channel and posts a warning notice. Keep that warning clear. The trap needs to be visible to the members you intend it to catch; hiding it from everyone defeats that purpose.
+
+## 2. Choose the response
+
+The default response is **softban**: kick the member and delete one day of messages without leaving a lasting ban. The dashboard also offers kick, ban or a one-day timeout. Timeout can be applied before removal. At least one consequence must remain selected.
+
+<SettingsPreview title="Example honeypot configuration" rows={[{label:'Trap channel',value:'#honeypot',hint:'Created by setup. Keep the warning visible.'},{label:'Remove them',value:'Softban',hint:'The default removes a day of messages without a lasting ban.'},{label:'Alerts',value:'#security-log'},{label:'Warning notice',value:'Do not send messages here'}]} />
+
+```text
+,honeypot punishment softban
+,honeypot alerts #security-log
+```
+
+These commands change settings. Select a response suitable for your server, and ensure Flanker has the corresponding moderation permissions and role position.
+
+## 3. Review the warning
+
+The dashboard’s **Warning notice** uses the shared message builder. Edit its text or card, inspect the preview and save the change. The caught count updates automatically. Reset the message if you want Flanker’s default warning again:
+
+```text
+,honeypot message reset
+```
+
+A clear warning is part of the setup. Do not disguise the channel as normal chat.
+
+<SetupFlow title="When someone posts" steps={[{title:'Check the sender',detail:'Bots and webhooks are ignored. The owner and members above Flanker are only reported.'},{title:'Apply the response',detail:'An eligible member receives the configured timeout or removal action.'},{title:'Report the catch',detail:'Staff receive the result in the alerts channel when one is configured.'}]} />
+
+## Verify without punishing a member
+
+1. Inspect the created channel and its pinned warning.
+2. Check View Channel, Send Messages and the permissions needed for the selected response.
+3. Confirm the alert channel is available to Flanker and staff.
+4. Inspect the selected punishment. Do not post from a regular member account merely to test the configuration; it can receive that punishment.
+
+## Troubleshooting
+
+**A sender was reported but not removed:** the owner and members above Flanker’s role are exempt from punishment. For other members, check the specific permission failure and role hierarchy.
+
+**No catch from a bot or webhook:** those senders are intentionally ignored.
+
+**Disable the feature:** `,honeypot disable` removes the trap. Review its consequences before running it.
+
+See [honeypot commands](/commands/security/#honeypot) for the message and alert options.

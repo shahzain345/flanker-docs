@@ -1,0 +1,111 @@
+---
+title: Set up welcome messages
+description: Choose a channel, build a message, use variables and test the result.
+---
+import SetupFlow from '../../../components/SetupFlow.astro';
+import SettingsPreview from '../../../components/SettingsPreview.astro';
+import WelcomePreview from '../../../components/WelcomePreview.astro';
+
+Welcome messages run when a member joins. You can send text, an embed or a Components V2 card, with one configured message per channel. Goodbye messages, boost thanks and quick greets have their own settings in the same dashboard section.
+
+<SetupFlow title="From setup to first welcome" steps={[{title:'Choose a channel',detail:'Select where the message belongs and check Flanker can send there.'},{title:'Build the message',detail:'Edit text, an embed or a card. Use variables for member and server details.'},{title:'Save and test',detail:'Save the configuration, then send a test before relying on a real join.'}]} />
+
+## 1. Open the right message type
+
+Use an account with **Manage Server**. Open your server in the [dashboard](https://flanker.wtf/servers), then open **Welcome** and choose the relevant section:
+
+| Message type | When it runs |
+| --- | --- |
+| Welcome | A member joins. |
+| Goodbye | A member leaves. |
+| Boost thanks | A member boosts the server. |
+| Quick greets | A join or first-message trigger, according to that greet’s settings. |
+
+Flanker needs View Channel and Send Messages in the destination. Images and embeds also need their relevant permissions. Check channel overrides if it reports a missing permission.
+
+## 2. Add a channel and message
+
+1. Choose **Add message** in Welcome messages.
+2. Select a channel, such as **#welcome**.
+3. Edit the message in the shared builder. Start with one clear greeting; add rules or introduction links if useful.
+4. Inspect the preview as the joining member.
+5. Save. Selecting a channel later previews it; **Edit** opens its message again.
+
+<SettingsPreview title="Example welcome configuration" rows={[{label:'Message type',value:'Welcome'},{label:'Destination',value:'#welcome'},{label:'Format',value:'Card'},{label:'Automatic deletion',value:'Off',hint:'Use deletion only when you want a temporary greeting.'}]} />
+
+### Command alternative
+
+```text
+,welcome add #welcome Welcome to {guild.name}, {user.mention}!
+,welcome test #welcome
+,welcome list
+```
+
+Replace the example channel with your own. The test sends a real message with you as the new member. It is separate from the dashboard’s local preview.
+
+## 3. Pick a message format
+
+**Text** is useful for a short greeting. **Embed** supports a title, description, fields, thumbnail and footer. **Card** uses Discord Components V2, including supported buttons and layouts. Keep the format appropriate for the information instead of adding every available element.
+
+<WelcomePreview />
+
+The example is illustrative. Your actual message uses the text and appearance you save.
+
+## 4. Use variables
+
+Variables are replaced when Flanker sends the message. Keep them in the script or builder rather than pasting a single member’s details.
+
+| Variable | Fills in |
+| --- | --- |
+| `{user.mention}` | The joining member’s mention. |
+| `{user.name}` | The member’s name. |
+| `{user.avatar}` | The member’s avatar URL, suitable for an image field. |
+| `{guild.name}` | The server name. |
+| `{guild.count}` | The server’s member count. |
+
+See the [variable reference](/resources/variables/) for additional supported values. Link to a channel in your own server, and make sure new members can actually see it.
+
+## 5. Import a script or Discord JSON
+
+The builder’s **Script** view accepts Flanker message scripts. Supported scripts can switch back to **Embed** or **Card** for visual editing, and visual edits update the script. Parts without a visual equivalent remain in Script so they are not silently removed.
+
+**Edit Discord JSON** opens the Discord message payload editor. For example:
+
+```json
+{
+  "content": "Welcome, {user.mention}!",
+  "embeds": [{ "description": "Read the rules and introduce yourself." }]
+}
+```
+
+JSON must be valid Discord message JSON, not a webhook request wrapper or editor project file. Variables and feature-specific mention rules still apply. After editing, return to the script or visual editor when the content is representable, check the preview and save.
+
+An incomplete script can block visual conversion. Read the explanation and use an explicit repair option when offered. Do not delete unsupported controls merely to enable a format button.
+
+## 6. Verify delivery
+
+- Confirm the intended channel is configured in `,welcome list`.
+- Save changes before testing. A preview is not a saved configuration.
+- Use **Send a test** or `,welcome test #welcome` and inspect the real message.
+- Confirm variables are filled and links lead to channels a new member can access.
+- If you use multiple welcome channels, check each channel independently.
+
+## Other join features
+
+**Autoroles** assign roles on join. **Sticky roles** restore roles when a member returns. Automatic tools cannot grant dangerous permissions; a welcome message does not grant any roles itself.
+
+**Quick greets** can run on joining or a member’s first message. Ping and automatic-deletion controls belong to that greet. They are separate from Welcome messages.
+
+**Invite tracking** can replace its own default join post when your welcome message includes invite variables. See [invite tracking](/guides/invites/).
+
+## Troubleshooting
+
+**No welcome during a raid:** welcomes are paused while raid mode is active. Members held behind captcha are welcomed after verification.
+
+**The builder says a script cannot be edited visually:** unsupported or malformed source must be repaired or kept in Script. Supported embed/card source should remain visually editable.
+
+**A test is correct but real joins differ:** inspect the selected message type, channel, saved state and variables that depend on an actual join. A test uses the selected test member rather than a new account.
+
+**Remove a welcome:** use the channel’s remove action or `,welcome remove #welcome`. This removes the configuration; it does not delete old messages already sent.
+
+See [all welcome and message commands](/commands/welcome-and-messages/) and [message scripting](/resources/scripting/).

@@ -1,0 +1,8 @@
+---
+interface Props { title: string; steps: { title: string; detail: string }[]; caption?: string }
+const { title, steps, caption } = Astro.props;
+---
+<figure class="setup-flow" aria-label={title}>
+  <figcaption><strong>{title}</strong>{caption && <span>{caption}</span>}</figcaption>
+  <ol>{steps.map((step, i) => <li><span class="flow-number" aria-hidden="true">{i + 1}</span><div><strong>{step.title}</strong><p>{step.detail}</p></div></li>)}</ol>
+</figure>

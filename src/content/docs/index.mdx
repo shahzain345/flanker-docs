@@ -1,52 +1,34 @@
 ---
-title: flanker
-description: Documentation for flanker, the all-in-one Discord security, moderation and management bot.
-template: splash
-hero:
-  tagline: Security, moderation, and everything else your server needs, in one bot.
-  actions:
-    - text: Get started
-      link: /start/getting-started/
-      icon: right-arrow
-    - text: Add flanker
-      link: https://flanker.wtf
-      icon: external
-      variant: minimal
-    - text: Dashboard
-      link: https://flanker.wtf/dashboard
-      icon: external
-      variant: minimal
+title: Flanker documentation
+description: Set up your server, understand Flanker’s protection and find every public command.
+tableOfContents: false
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+<div class="doc-intro">Set up your server, understand what each setting changes and find the right command when you need it.</div>
+<div class="docs-actions"><a class="docs-button" href="/start/getting-started/">Get started <span aria-hidden="true">→</span></a><a class="docs-button" href="/commands/">Find a command</a><a class="docs-button" href="https://flanker.wtf/servers">Open dashboard ↗</a></div>
 
-## What flanker does
+## Set up your server
 
-<CardGrid>
-  <Card title="Stops nukes" icon="shield">
-    Antinuke watches for mass bans and deletions, dangerous permission grants,
-    webhook and emoji spam and rogue bots, punishes whoever trips a limit, and
-    undoes the damage.
-  </Card>
-  <Card title="Stops raids" icon="seti:lock">
-    Antiraid reacts in real time with lockdown, captcha verification and
-    removal of raiders before they touch your server.
-  </Card>
-  <Card title="Full moderation" icon="approve-check">
-    Ban, timeout, jail, purge and warnings, all logged with a searchable case
-    history and staff notes.
-  </Card>
-  <Card title="Everything else" icon="puzzle">
-    Tickets, applications, welcome messages, logging, vanity roles,
-    VoiceMaster, leveling, giveaways, music, a starboard and more.
-  </Card>
-</CardGrid>
+Start with security, then choose how members are welcomed and supported. Each guide explains the dashboard path, command alternative and how to check the result.
 
-## Jump in
+<ul class="guide-list">
+<li><a href="/guides/antinuke/"><div><strong>Antinuke</strong><p>Place Flanker’s role, enable protection and understand panic recovery.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/antiraid/"><div><strong>Antiraid</strong><p>Configure join detection, chat floods, verification and raid recovery.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/welcome/"><div><strong>Welcome messages</strong><p>Choose a channel, build a message, fill variables and test it.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/honeypot/"><div><strong>Honeypot</strong><p>Create a clearly marked trap channel and choose what happens to posters.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/tickets/"><div><strong>Tickets and applications</strong><p>Define ticket types, staff access and application review.</p></div><span aria-hidden="true">→</span></a></li>
+</ul>
 
-<CardGrid>
-  <LinkCard title="Getting started" href="/start/getting-started/" description="Invite flanker and send your first command." />
-  <LinkCard title="Invite & setup" href="/start/setup/" description="Permissions, prefix and the fastest way to configure a server." />
-  <LinkCard title="Security" href="/guides/security/" description="Set up antinuke, antiraid and the honeypot." />
-  <LinkCard title="Command reference" href="/commands/general/" description="Every command, with syntax, permissions and examples." />
-</CardGrid>
+## Use Flanker every day
+
+<ul class="guide-list">
+<li><a href="/guides/dashboard/"><div><strong>Find your way around the dashboard</strong><p>Use setup views, search and previews without losing unfinished edits.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/user-install/"><div><strong>Add Flanker to your profile</strong><p>Use supported personal slash commands in the places Discord allows.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/music/"><div><strong>Music</strong><p>Playback, queue controls, DJs and staying connected.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/guides/lastfm/"><div><strong>Last.fm</strong><p>Connect your account, view listening cards and opt into scrobbling.</p></div><span aria-hidden="true">→</span></a></li>
+<li><a href="/resources/scripting/"><div><strong>Build custom messages</strong><p>Edit text, embeds, cards, scripts and Discord message JSON.</p></div><span aria-hidden="true">→</span></a></li>
+</ul>
+
+## Commands that stay in sync
+
+The [command index](/commands/) is generated from Flanker’s command registry and help source. Search by name, alias or subcommand, then open the full syntax, permission requirements and examples. Internal team diagnostics are excluded.

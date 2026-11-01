@@ -1,0 +1,43 @@
+---
+title: Personal commands
+description: Flanker personal commands, syntax, permissions and examples.
+sidebar:
+  order: 15
+---
+
+import CommandReference from '../../../components/CommandReference.astro';
+import commands from '../../../data/commands.json';
+
+Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.
+
+## afk
+
+<CommandReference command={commands.find(command => command.name === "afk")} />
+
+## remind
+
+<CommandReference command={commands.find(command => command.name === "remind")} />
+
+## birthday
+
+<CommandReference command={commands.find(command => command.name === "birthday")} />
+
+## timezone
+
+<CommandReference command={commands.find(command => command.name === "timezone")} />
+
+## time
+
+<CommandReference command={commands.find(command => command.name === "time")} />
+
+## seen
+
+<CommandReference command={commands.find(command => command.name === "seen")} />
+
+## namehistory
+
+<CommandReference command={commands.find(command => command.name === "namehistory")} />
+
+## selfprefix
+
+<CommandReference command={commands.find(command => command.name === "selfprefix")} />

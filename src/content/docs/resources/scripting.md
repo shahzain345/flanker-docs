@@ -82,3 +82,18 @@ You rarely need to write this by hand. The dashboard's message editor builds
 the same script visually, with a live preview and buttons you can drag inside or
 outside the card.
 :::
+
+## Edit Discord message JSON
+
+In the shared message builder, open **Script → Edit Discord JSON**. This edits the actual Discord message payload rather than Flanker’s script format. A simple payload can contain `content` and `embeds`:
+
+```json
+{
+  "content": "Hello, {user.mention}!",
+  "embeds": [{ "title": "Welcome", "description": "Read the rules before chatting." }]
+}
+```
+
+Paste a message payload, not a webhook URL, editor project or full HTTP request. Check its validation errors and preview before saving. Variables and the feature’s mention restrictions still apply.
+
+Supported content can return to the visual builder. Advanced fields with no visual equivalent stay in Script; inspect the explanation before repairing or converting them. Switching between JSON and Script should retain the message source. See [welcome setup](/guides/welcome/#5-import-a-script-or-discord-json) for a complete import-and-test flow.

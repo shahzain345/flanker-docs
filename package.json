@@ -7,7 +7,8 @@
     "gen": "python3 scripts/gen-commands.py ../assets/help.txt",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check:commands": "python3 scripts/check-commands.py"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.32.0",

@@ -1,0 +1,23 @@
+---
+import commands from '../data/commands.json';
+const categories = [...new Set(commands.map(command => command.category))];
+---
+<section class="command-explorer" aria-label="Find a command">
+  <label class="command-search"><span>Search commands</span><input id="command-query" type="search" placeholder="Try ban, fm, welcome or role all" autocomplete="off" /></label>
+  <div class="command-filters" aria-label="Command categories"><button type="button" data-category="" aria-pressed="true">All</button>{categories.map(category => <button type="button" data-category={category} aria-pressed="false">{category}</button>)}</div>
+  <p class="command-results" role="status" aria-live="polite">{commands.length} commands</p>
+  <ul class="command-directory">{commands.map(command => <li data-category={command.category} data-search={[command.name,...command.aliases,command.category,...command.desc,...command.subs.map(sub => sub.syntax)].join(' ').toLowerCase()}><a href={`/commands/${command.slug}/#${command.name}`}><strong>{command.name}</strong><p>{command.desc.join(' ')}</p><span>{command.category}{command.aliases.length > 0 && ` · ${command.aliases.join(', ')}`}</span></a><span class="directory-arrow" aria-hidden="true">↗</span></li>)}</ul>
+  <p class="no-commands" hidden>No matching commands. Try a command name, alias or feature.</p>
+</section>
+<script>
+  const explorer = document.querySelector<HTMLElement>('.command-explorer');
+  if (explorer) {
+    const input = explorer.querySelector<HTMLInputElement>('input')!;
+    const rows = [...explorer.querySelectorAll<HTMLElement>('.command-directory li')];
+    const buttons = [...explorer.querySelectorAll<HTMLButtonElement>('[data-category]')].filter(el => el.tagName === 'BUTTON');
+    let category = '';
+    const update = () => { const terms = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean); let count = 0; for (const row of rows) { const match = (!category || row.dataset.category === category) && terms.every(term => row.dataset.search?.includes(term)); row.hidden = !match; if (match) count++; } explorer.querySelector('.command-results')!.textContent = `${count} command${count === 1 ? '' : 's'}`; (explorer.querySelector('.no-commands') as HTMLElement).hidden = count > 0; };
+    input.addEventListener('input', update);
+    for (const button of buttons) button.addEventListener('click', () => { category = button.dataset.category ?? ''; for (const other of buttons) other.setAttribute('aria-pressed', String(other === button)); update(); });
+  }
+</script>

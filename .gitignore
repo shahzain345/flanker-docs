@@ -10,3 +10,7 @@ node_modules/
 npm-debug.log*
 # os
 .DS_Store
+
+# Python command-generation caches
+__pycache__/
+*.pyc

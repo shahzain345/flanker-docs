@@ -29,3 +29,9 @@ with the voice commands (`,voicelevel`).
 - Level role rewards and the level-up message are configured alongside the
   leveling settings. Open the dashboard, pick your server, and look for the
   leveling options.
+
+## Move from another leveling bot
+
+Configure flanker's reward roles with the levels they already represent, for example `,levels add @Level50 50`. Members holding a configured reward role are adopted at that role's level when leveling imports their existing roles. The highest matching configured level is used as a starting floor rather than resetting them to zero; existing higher XP is preserved.
+
+This imports the levels represented by those Discord roles, not another bot's private XP totals or progress within a level. Text leveling and voice leveling remain separate. Check your role-to-level mappings before enabling rewards.

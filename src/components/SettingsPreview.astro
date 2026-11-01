@@ -1,0 +1,8 @@
+---
+interface Props { title: string; rows: { label: string; value: string; hint?: string }[]; caption?: string }
+const { title, rows, caption = 'Illustrative setup. These are examples, not your server’s current settings.' } = Astro.props;
+---
+<figure class="settings-preview">
+  <figcaption><strong>{title}</strong><span>{caption}</span></figcaption>
+  <dl>{rows.map(row => <div><dt>{row.label}{row.hint && <small>{row.hint}</small>}</dt><dd>{row.value}</dd></div>)}</dl>
+</figure>

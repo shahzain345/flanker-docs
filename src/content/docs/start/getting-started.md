@@ -11,21 +11,21 @@ minutes.
 
 ## Add flanker
 
-1. Open [flanker.wtf](https://flanker.wtf) and invite the bot to your server.
-2. Grant the permissions it asks for. Administrator is the simplest, and the
-   security features (antinuke, antiraid, role recovery) need broad permissions
-   to undo damage. See [Invite & setup](/start/setup/) for the detail.
+1. Open [flanker.wtf/invite](https://flanker.wtf/invite) and invite the bot to your server. The current server invite requests Administrator; see the permissions guide if you use a narrower configuration.
+2. Grant the specific permissions needed by the features you enable. If an
+   action needs another permission, flanker names it in its reply. See
+   [Invite & setup](/start/setup/) for security and channel permissions.
 3. flanker comes online and is ready. No further install is needed.
 
 ## Using commands
 
-flanker is driven by **prefix commands** and the **dashboard**.
+flanker supports **slash commands**, **prefix commands** and the **dashboard**.
 
 - The default prefix is `,`. For example, `,help` or `,ban @user`.
 - You can also mention the bot instead of the prefix.
 - Change the prefix with `,prefix set !` (see the [General commands](/commands/general/)).
 
-Throughout these docs, commands are written **without** the prefix. Parameters
+The command index shows syntax **without** a prefix; copyable examples and setup guides use `,`. Replace it with your server’s prefix when needed. Parameters
 in `(round)` brackets are required; `[square]` brackets are optional.
 
 ## Finding help in Discord
@@ -47,3 +47,9 @@ in with Discord, pick your server, and configure modules visually. See
 - [Invite & setup](/start/setup/) for permissions and first configuration.
 - [Security](/guides/security/) to lock the server down (do this early).
 - The [Command reference](/commands/general/) for every command.
+
+## Slash commands
+
+Slash commands use Discord's native fields. For example, `/ban` requires a member picker and offers a reason and Silent switch. Roles and channels use pickers; counts use numeric fields; fixed actions use choices. Flanker replies to the interaction directly, without posting a prefix command first.
+
+Frequently used commands have their own slash names. The rest are grouped by category to fit Discord's command limits. Browse the slash menu for the available actions and options. The generic `/command name arguments` bridge has been removed. Slash and prefix commands keep the same permission, cooldown and security checks.

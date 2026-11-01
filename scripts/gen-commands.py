@@ -13,6 +13,8 @@ help.txt format (see its own header):
     > syntax ; perm ; description ; ex?    a subcommand/usage row
 """
 import os
+import json
+from pathlib import Path
 import re
 import sys
 
@@ -93,7 +95,9 @@ def parse(path):
                 if cur_cat is None:
                     cur_cat = {"name": "Other", "cmds": []}
                     categories.append(cur_cat)
-                cur_cat["cmds"].append(cur_cmd)
+                # Internal staff diagnostics stay out of the public reference.
+                if name != "pingtrace":
+                    cur_cat["cmds"].append(cur_cmd)
                 continue
             if line.startswith("> "):
                 parts = [p.strip() for p in line[2:].split(";")]
@@ -124,58 +128,44 @@ def perm_label(p):
     return "Anyone" if p in ("", "-") else p
 
 
+def registry():
+    source = Path(HERE).parents[1] / "src" / "commands" / "mod.rs"
+    text = source.read_text().split("pub const COMMANDS:", 1)[1].split("];", 1)[0]
+    return {name: re.findall(r'"([^"\n]+)"', aliases) for name, aliases in re.findall(r'\(\s*"([^"\n]+)"\s*,\s*&\[(.*?)\]\s*,\s*"[^"\n]+"\s*,?\s*\)', text, re.S) if name != "pingtrace"}
+
+
 def render(cat, order):
-    name = cat["name"]
-    lines = [
-        "---",
-        f"title: {name} commands",
-        f"description: flanker {name.lower()} commands, their syntax, permissions and examples.",
-        f"sidebar:\n  order: {order}",
-        "---",
-        "",
-        "Commands are shown without a prefix. Use your server's prefix "
-        "(default `,`) or mention flanker. `(round)` parameters are required, "
-        "`[square]` are optional.",
-        "",
-    ]
-    for cmd in cat["cmds"]:
-        lines.append(f"## {cmd['name']}")
-        lines.append("")
-        if cmd["desc"]:
-            lines.append(md_escape(" ".join(cmd["desc"])))
-            lines.append("")
-        lines.append(f"**Permission:** {perm_label(cmd['perm'])}")
-        lines.append("")
-        if cmd["dash"] not in ("", "-"):
-            lines.append(dash_line(cmd["dash"]))
-            lines.append("")
-        for s in cmd["subs"]:
-            lines.append(f"- **`{md_escape(s['syntax'])}`**  ")
-            tail = []
-            if s["desc"]:
-                tail.append(md_escape(s["desc"]))
-            lines.append(("  " + " ".join(tail)) if tail else "  ")
-            sub_meta = []
-            if perm_label(s["perm"]) != "Anyone":
-                sub_meta.append(f"*{s['perm']}*")
-            if s["ex"]:
-                sub_meta.append(f"example: `{md_escape(s['ex'])}`")
-            if sub_meta:
-                lines.append("  " + "  ·  ".join(sub_meta))
-        lines.append("")
-    return "\n".join(lines).rstrip() + "\n"
+    lines = ["---", f"title: {cat['name']} commands", f"description: Flanker {cat['name'].lower()} commands, syntax, permissions and examples.", f"sidebar:\n  order: {order}", "---", "", "import CommandReference from '../../../components/CommandReference.astro';", "import commands from '../../../data/commands.json';", "", "Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.", ""]
+    for cmd in cat['cmds']:
+        lines.extend([f"## {cmd['name']}", "", f"<CommandReference command={{commands.find(command => command.name === {json.dumps(cmd['name'])})}} />", ""])
+    return "\n".join(lines)
 
 
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "..", "assets", "help.txt")
     cats = parse(src)
+    registered = registry()
+    names = [cmd['name'] for category in cats for cmd in category['cmds']]
+    if len(names) != len(set(names)):
+        raise SystemExit("Duplicate command names in help.txt")
+    if set(names) != set(registered):
+        raise SystemExit(f"Command coverage mismatch. Missing help: {sorted(set(registered)-set(names))}; unregistered: {sorted(set(names)-set(registered))}")
+    records = [{**cmd, "aliases": registered[cmd['name']], "category": category['name'], "slug": slug(category['name'])} for category in cats for cmd in category['cmds']]
+    data = Path(HERE).parent / 'src' / 'data'
+    data.mkdir(exist_ok=True)
+    (data / 'commands.json').write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n")
+    slash = json.loads((Path(HERE).parents[1] / 'assets' / 'slash.json').read_text())
+    routes = [{key: route[key] for key in ('path', 'description', 'portable', 'options')} for route in slash['routes']]
+    routes.append({'path': ['confess'], 'description': 'Submit an anonymous confession through a form.', 'portable': False, 'options': []})
+    (data / 'slash.json').write_text(json.dumps(routes, indent=2, ensure_ascii=False) + "\n")
+
     os.makedirs(OUT, exist_ok=True)
     # Clear old generated pages so removed categories don't linger.
     for f in os.listdir(OUT):
-        if f.endswith(".md"):
+        if f.endswith(".md") or (f.endswith(".mdx") and f != "index.mdx"):
             os.remove(os.path.join(OUT, f))
     for i, cat in enumerate(cats):
-        path = os.path.join(OUT, f"{slug(cat['name'])}.md")
+        path = os.path.join(OUT, f"{slug(cat['name'])}.mdx")
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(render(cat, i + 1))
     total = sum(len(c["cmds"]) for c in cats)

@@ -1,0 +1,47 @@
+---
+title: General commands
+description: Flanker general commands, syntax, permissions and examples.
+sidebar:
+  order: 1
+---
+
+import CommandReference from '../../../components/CommandReference.astro';
+import commands from '../../../data/commands.json';
+
+Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.
+
+## knowme
+
+<CommandReference command={commands.find(command => command.name === "knowme")} />
+
+## bestie
+
+<CommandReference command={commands.find(command => command.name === "bestie")} />
+
+## friendship
+
+<CommandReference command={commands.find(command => command.name === "friendship")} />
+
+## gift
+
+<CommandReference command={commands.find(command => command.name === "gift")} />
+
+## gifts
+
+<CommandReference command={commands.find(command => command.name === "gifts")} />
+
+## help
+
+<CommandReference command={commands.find(command => command.name === "help")} />
+
+## prefix
+
+<CommandReference command={commands.find(command => command.name === "prefix")} />
+
+## dashboard
+
+<CommandReference command={commands.find(command => command.name === "dashboard")} />
+
+## ping
+
+<CommandReference command={commands.find(command => command.name === "ping")} />

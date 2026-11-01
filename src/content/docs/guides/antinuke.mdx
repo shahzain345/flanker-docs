@@ -1,0 +1,110 @@
+---
+title: Set up antinuke
+description: Configure server protection, role hierarchy, trusted access and panic recovery.
+---
+import SetupFlow from '../../../components/SetupFlow.astro';
+import SettingsPreview from '../../../components/SettingsPreview.astro';
+
+Antinuke watches destructive server actions, including bans, kicks, channel or role changes, dangerous permission grants, webhooks and bot additions. It punishes the actor and restores what it can. Discord permissions, role hierarchy and available audit information still determine what Flanker can do.
+
+<SetupFlow title="Your setup path" steps={[{title:'Prepare access',detail:'Use the server owner account and place Flanker above the roles it must manage.'},{title:'Enable protection',detail:'Run guided setup, then review modules, logs and trusted access.'},{title:'Check recovery',detail:'Understand panic, approvals and what happens when a role cannot be restored.'}]} />
+
+## 1. Prepare the server
+
+Use the **server owner** account for initial setup. Antinuke admins can manage supported settings afterward. A Flanker Admin role, fake permission or Discord Administrator permission does not automatically make someone an antinuke admin.
+
+In **Discord → Server Settings → Roles**, move Flanker’s highest role above the staff and member roles it must manage. It cannot manage the server owner or members above it.
+
+<SettingsPreview title="Example role order" caption="Top to bottom in Discord. Role names are illustrative." rows={[{label:'Flanker',value:'Higher',hint:'Needs to sit above roles it protects and manages.'},{label:'Staff roles',value:'Below Flanker'},{label:'Member roles',value:'Below Flanker'},{label:'@everyone',value:'Bottom'}]} />
+
+Flanker needs the specific permissions for the actions you enable, such as View Audit Log, Manage Roles, Manage Channels and the relevant moderation permissions. If an action is denied, its reply names the missing permissions. Check channel overrides as well as server permissions. See [invite and permissions](/start/setup/).
+
+## 2. Run guided setup
+
+### On the dashboard
+
+1. Open the [server picker](https://flanker.wtf/servers), select your server and open **Antinuke**.
+2. Start setup as the owner. Choose **Beginner** for the recommended configuration, or **Advanced** to review optional hardening.
+3. Read each optional choice before enabling it. Review trusted bots, the backup role and other hardening choices separately.
+4. Review the protection state and module settings after setup completes.
+
+### With commands
+
+```text
+,antinuke setup
+,antinuke config
+```
+
+The setup command offers Beginner and Advanced paths. Config shows enabled modules, thresholds, punishments, admins and trusted bots. Use your server’s prefix if it differs from `,`.
+
+## 3. Understand a module
+
+A module has an enabled state, a threshold and a punishment. Thresholds are limits within an action window, not a promise that an attacker can cause exactly that much damage before containment.
+
+<SettingsPreview title="Example: ban protection" caption="Illustrative configuration, not a universal recommendation." rows={[{label:'Ban protection',value:'On'},{label:'Threshold',value:'3 actions',hint:'An example limit. Choose limits for your server’s moderation activity.'},{label:'Punishment',value:'Ban'},{label:'Count command actions',value:'Configurable',hint:'The --command option also counts bans and kicks made through bot commands.'}]} />
+
+```text
+,antinuke ban on --threshold 3 --do ban
+```
+
+Review the [complete module syntax](/commands/security/#antinuke) before changing thresholds. A lower threshold alone does not guarantee containment before another action.
+
+## 4. Keep trusted access small
+
+- **Antinuke admins** can change security settings and are not punished by antinuke. Add only people you trust with that access.
+- **Trusted bots** still have action caps. Security bots retain their permissions; utility bots lose Administrator and Manage Webhooks.
+- **Backup owner** approval is required for security-weakening changes when configured. Choose a separate trusted person.
+- **Flanker team site admins** have an explicitly separate dashboard exception. Ordinary Flanker Admin roles do not gain it.
+
+```text
+,antinuke trusted
+,antinuke admin list
+,antinuke backupowner @trusted-person
+```
+
+The last command changes your configuration. The first two inspect it. Never use a broad whitelist simply to silence an unexplained alert.
+
+## 5. Understand panic mode
+
+With antinuke and ban protection enabled, **strict native-ban protection** can start panic on the first unknown native ban, even when the ban is legitimate. Known Flanker ban requests are excluded. Review this tradeoff before enabling it.
+
+```text
+,antinuke panic
+,antinuke panic nativebans on
+```
+
+<SetupFlow title="During panic" caption="Panic is an emergency state, not the same as antiraid lockdown." steps={[{title:'Contain',detail:'Antinuke limits drop to one and dangerous permissions on manageable roles are paused.'},{title:'Pause bulk work',detail:'Long-running role and other bulk tasks wait while security responds.'},{title:'Owner recovery',detail:'The owner ends panic; failed role restoration is reported and saved for a later retry.'}]} />
+
+Only the owner ends panic, with backup-owner approval when configured:
+
+```text
+,antinuke panic end
+```
+
+Panic ends even if some roles cannot be restored. Flanker reports those roles and preserves their recovery data; it does not keep the server in panic solely because one restoration failed. Fix the role hierarchy or missing permissions, then retry saved recovery:
+
+```text
+,antinuke panic recover
+```
+
+Saved permission pauses survive restarts. In-memory bulk tasks do not necessarily survive a bot restart.
+
+## Verify your setup
+
+1. Inspect `,antinuke config` and the dashboard’s protection state.
+2. Confirm Flanker’s role is above every role it must manage.
+3. Verify the configured log channel is visible and writable by Flanker.
+4. Review trusted bots and antinuke admins. Confirm the backup owner understands approval requests.
+5. Check the panic status without starting an attack. Use a controlled test server for destructive testing.
+
+## If something does not work
+
+**A role cannot be restored:** check Manage Roles and role order, then use saved recovery. Deleted roles or roles above Flanker may need manual attention.
+
+**Someone cannot change a security setting:** check their actual owner or antinuke-admin status. Fake permissions never unlock security controls.
+
+**An approval is pending:** the backup owner must approve qualifying changes. Turning a setting off is not a way to bypass recovery.
+
+**You want to start over:** `,antinuke reset` is owner-only, disables protection and follows backup-owner approval rules when configured. End panic first. Saved failed-role recovery is retained. A reset is not a recovery command.
+
+Next: [set up antiraid](/guides/antiraid/) or browse [all security commands](/commands/security/).

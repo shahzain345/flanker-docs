@@ -1,0 +1,51 @@
+---
+title: Security commands
+description: Flanker security commands, syntax, permissions and examples.
+sidebar:
+  order: 2
+---
+
+import CommandReference from '../../../components/CommandReference.astro';
+import commands from '../../../data/commands.json';
+
+Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.
+
+## antinuke
+
+<CommandReference command={commands.find(command => command.name === "antinuke")} />
+
+## antiraid
+
+<CommandReference command={commands.find(command => command.name === "antiraid")} />
+
+## raid
+
+<CommandReference command={commands.find(command => command.name === "raid")} />
+
+## honeypot
+
+<CommandReference command={commands.find(command => command.name === "honeypot")} />
+
+## fakepermissions
+
+<CommandReference command={commands.find(command => command.name === "fakepermissions")} />
+
+## filter
+
+<CommandReference command={commands.find(command => command.name === "filter")} />
+
+## channel
+
+<CommandReference command={commands.find(command => command.name === "channel")} />
+
+## webhook
+
+<CommandReference command={commands.find(command => command.name === "webhook")} />
+
+## elevate
+
+<CommandReference command={commands.find(command => command.name === "elevate")} />
+
+## backup
+
+<CommandReference command={commands.find(command => command.name === "backup")} />

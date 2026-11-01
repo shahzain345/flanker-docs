@@ -1,0 +1,98 @@
+---
+title: Set up antiraid
+description: Configure join detection, coordinated floods, verification, resource bursts and recovery.
+---
+import SetupFlow from '../../../components/SetupFlow.astro';
+import SettingsPreview from '../../../components/SettingsPreview.astro';
+
+Antiraid handles waves of joins and raid-like activity from members. Antinuke handles destructive permission and moderation actions. Set them up separately; enabling one does not replace the other.
+
+## Before you start
+
+You need the **real Manage Server permission** for antiraid configuration. Fake permissions do not unlock it. Flanker needs permissions for the response you select and access to the channels it protects. Keep its role above members it must moderate.
+
+Choose a private alert channel staff can read. Captcha-based responses let suspicious members verify; kick and ban responses remove them and can also affect legitimate new members if configured too aggressively.
+
+<SetupFlow title="How a raid response works" steps={[{title:'Detect a pattern',detail:'Configured joins, chat activity or resource bursts cross their limits.'},{title:'Contain the raid',detail:'The selected response can hold suspicious members behind verification and lock affected access.'},{title:'Review and reopen',detail:'Staff review held members and end raid mode, restoring access through recovery.'}]} />
+
+## 1. Run guided setup
+
+On the [dashboard](https://flanker.wtf/servers), select the server, open **Antiraid** and start setup. **Beginner** uses recommended limits. **Advanced** exposes individual detection rules and responses.
+
+Or run:
+
+```text
+,antiraid setup
+,antiraid log #antiraid-log
+,antiraid config
+```
+
+The log command changes the destination. Replace the example channel with your staff channel.
+
+## 2. Review joins and chat separately
+
+<SettingsPreview title="Example join rule" caption="Example values from the command reference. Adjust them to your normal join rate." rows={[{label:'Join detection',value:'On'},{label:'Join limit',value:'8 joins in 10 seconds'},{label:'Response',value:'Captcha'},{label:'Lockdown',value:'Review separately',hint:'The --lock option controls lockdown for the join rule.'}]} />
+
+```text
+,antiraid joins on --joins 8 --window 10s --do captcha
+```
+
+A busy event can generate legitimate bursts. Review normal join volume before tuning the rule. Avatar and account-age rules are separate checks; an account without a picture is not necessarily malicious.
+
+Chat flood rules consider messages, participating accounts and repeated text. Media, repeated-link and Discord AutoMod correlation have their own limits. The AutoMod correlation rule needs an enabled Discord mention-spam rule; one blocked attempt alone does not qualify.
+
+See the [full antiraid options](/commands/security/#antiraid) for every rule, supported response and limit.
+
+## 3. Protect tickets and temporary voice channels
+
+Flanker’s ticket and Join to Create burst detection defaults to **six distinct accounts in three seconds**. Repeated attempts from a single account do not fill that distinct-account limit.
+
+```text
+,antiraid tickets on --accounts 6 --window 3s
+,antiraid voice on --accounts 6 --window 3s
+```
+
+During raid mode, Flanker stops new tickets and locks creator channels, voice joins and voice-channel chat. Existing rooms remain except recent rooms made by flagged raid accounts.
+
+### Another bot’s ticket panel
+
+Use `,antiraid tickets setup` to provide its bot ID, panel message link and ticket category. Use a dedicated panel channel: raid mode hides that channel. Other apps’ button clicks are private; Flanker uses audit events and permission changes instead, and does not punish ambiguous openers.
+
+### Another bot’s voice creator
+
+```text
+,antiraid voice add #join-to-create
+```
+
+Flanker’s own creators are included automatically. Add only external creators that need monitoring.
+
+## 4. Review members and end raid mode
+
+```text
+,antiraid unverified
+,antiraid verify @member
+,antiraid end
+```
+
+Review the held member before verifying them. End raid mode once staff have checked the situation. If a channel or role cannot be restored, read the recovery result and fix the specific permission or hierarchy problem instead of repeatedly toggling protection.
+
+The manual `,raid` command is a moderation action: it acts on everyone who joined within the supplied duration and starts raid mode. Do not use it as a harmless test command.
+
+## Verify your setup
+
+- Confirm enabled rules and alert channel with `,antiraid config`.
+- Check Flanker can read, write and manage the relevant channels.
+- Explain verification and recovery to staff before an incident.
+- Confirm watched external panels and creators belong to the intended bots and categories.
+
+## Troubleshooting
+
+**No alerts:** verify the log channel and channel overrides.
+
+**Legitimate joins are flagged:** compare actual join volume with the rule, review account-age/avatar checks and adjust the relevant limit. Avoid broadly whitelisting people to hide an unexplained problem.
+
+**A member remains held:** inspect `,antiraid unverified`, verify the intended member and review any permission-recovery errors.
+
+**Reset everything:** `,antiraid reset` is owner-only. It unlocks channels and releases captcha members before resetting settings. Failed recovery records are kept. Team site admins have a separate dashboard reset exception.
+
+Next: [honeypot](/guides/honeypot/) and [welcome messages](/guides/welcome/).

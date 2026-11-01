@@ -1,0 +1,35 @@
+---
+title: Snipe and aliases commands
+description: Flanker snipe and aliases commands, syntax, permissions and examples.
+sidebar:
+  order: 4
+---
+
+import CommandReference from '../../../components/CommandReference.astro';
+import commands from '../../../data/commands.json';
+
+Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.
+
+## snipe
+
+<CommandReference command={commands.find(command => command.name === "snipe")} />
+
+## editsnipe
+
+<CommandReference command={commands.find(command => command.name === "editsnipe")} />
+
+## reactionsnipe
+
+<CommandReference command={commands.find(command => command.name === "reactionsnipe")} />
+
+## clearsnipe
+
+<CommandReference command={commands.find(command => command.name === "clearsnipe")} />
+
+## autosnipe
+
+<CommandReference command={commands.find(command => command.name === "autosnipe")} />
+
+## alias
+
+<CommandReference command={commands.find(command => command.name === "alias")} />

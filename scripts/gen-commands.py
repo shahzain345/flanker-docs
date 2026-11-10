@@ -150,13 +150,27 @@ def main():
         raise SystemExit("Duplicate command names in help.txt")
     if set(names) != set(registered):
         raise SystemExit(f"Command coverage mismatch. Missing help: {sorted(set(registered)-set(names))}; unregistered: {sorted(set(names)-set(registered))}")
+    slash = json.loads((Path(HERE).parents[1] / 'assets' / 'slash.json').read_text())
+    public_routes = [route for route in slash['routes'] if route['command'] in registered]
     records = [{**cmd, "aliases": registered[cmd['name']], "category": category['name'], "slug": slug(category['name'])} for category in cats for cmd in category['cmds']]
+    for command in records:
+        for form in command['subs']:
+            form['slash'] = [route['path'] for route in public_routes if route['command'] == command['name'] and route['syntax'] == form['syntax']]
+            assert form['slash'], ('No typed equivalent', command['name'], form['syntax'])
     data = Path(HERE).parent / 'src' / 'data'
     data.mkdir(exist_ok=True)
     (data / 'commands.json').write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n")
-    slash = json.loads((Path(HERE).parents[1] / 'assets' / 'slash.json').read_text())
-    routes = [{key: route[key] for key in ('path', 'description', 'portable', 'options')} for route in slash['routes']]
-    routes.append({'path': ['confess'], 'description': 'Submit an anonymous confession through a form.', 'portable': False, 'options': []})
+    forms = {(command['name'], form['syntax']): form['desc'] for command in records for form in command['subs']}
+    routes = []
+    for route in public_routes:
+        groups = {}
+        for binding in route['bindings']:
+            if binding.get('union') and binding.get('union_required'):
+                group = groups.setdefault(binding['union'], {'fields': [], 'multiple': False})
+                group['fields'].append(binding['name'])
+                group['multiple'] |= binding.get('union_many', False)
+        routes.append({**{key: route[key] for key in ('command', 'syntax', 'path', 'description', 'portable', 'options')}, 'details': forms[(route['command'], route['syntax'])], 'aliases': registered[route['command']], 'required_groups': list(groups.values())})
+    routes.append({'command': 'confess', 'syntax': '', 'aliases': [], 'required_groups': [], 'path': ['confess'], 'description': 'Submit an anonymous confession through a form.', 'details': 'Submit an anonymous confession through a form.', 'portable': False, 'options': []})
     (data / 'slash.json').write_text(json.dumps(routes, indent=2, ensure_ascii=False) + "\n")
 
     os.makedirs(OUT, exist_ok=True)

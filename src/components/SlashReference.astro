@@ -4,12 +4,53 @@ const types: Record<number,string> = {3:'Text',4:'Integer',5:'Yes / no',6:'User'
 const groups = [...new Set(catalog.map(route => route.path[0]))];
 ---
 <section class="slash-reference" aria-label="Typed slash commands">
-  <label class="command-search"><span>Search typed commands</span><input type="search" placeholder="Try lastfm, run, ban or a field name" /></label>
+  <label class="command-search"><span>Search typed commands</span><input type="search" placeholder="Try a slash path, prefix alias or field name" /></label>
   <button type="button" class="docs-button profile-filter" aria-pressed="false">Profile installation only</button>
   <p class="slash-count" role="status" aria-live="polite">{catalog.length} command paths</p>
-  {groups.map(group => <details class="slash-group command-usages"><summary><strong>/{group}</strong><span>{catalog.filter(route=>route.path[0] === group).length} paths</span></summary><div>{catalog.filter(route=>route.path[0]===group).map(route => <section class="slash-route" data-portable={String(route.portable)} data-search={[route.path.join(' '),route.description,...route.options.map(field=>field.name)].join(' ').toLowerCase()}><h3>/{route.path.join(' ')}</h3><p>{route.description}</p><p class="usage-permission">{route.portable ? 'Server or profile installation' : 'Server installation'}</p>{route.options.length>0 ? <dl>{route.options.map(field => <div><dt><code>{field.name}</code><span>{types[field.type] ?? 'Value'} · {field.required ? 'Required' : 'Optional'}</span></dt><dd>{field.description}{field.choices?.length>0 && <span>Choices: {field.choices.map(choice=>choice.name).join(', ')}</span>}{field.min_value !== undefined && <span>Minimum: {field.min_value}</span>}{field.max_value !== undefined && <span>Maximum: {field.max_value}</span>}</dd></div>)}</dl> : <p class="usage-permission">No additional command fields. A command may open a form or other controls.</p>}</section>)}</div></details>)}
+  {groups.map(group => <details class="slash-group command-usages"><summary><strong>/{group}</strong><span>{catalog.filter(route=>route.path[0] === group).length} paths</span></summary><div>{catalog.filter(route=>route.path[0]===group).map(route => <section id={'slash-'+route.path.join('/')} class="slash-route" data-portable={String(route.portable)} data-search={[route.path.join(' '),route.command,route.syntax,...route.aliases,route.description,route.details,...route.options.map(field=>field.name)].join(' ').toLowerCase()}><h3>/{route.path.join(' ')}</h3><p>{route.details}</p><p class="usage-permission">{route.portable ? 'Server or profile installation' : 'Server installation'}</p>{route.syntax && <dl class="command-meta"><div><dt>Prefix</dt><dd><code>,{route.syntax}</code></dd></div><div><dt>Mention</dt><dd><code>@Flanker {route.syntax}</code></dd></div></dl>}{route.required_groups.map(group=><p class="usage-permission">{group.multiple ? 'Choose one or more of' : 'Choose one of'}: {group.fields.map(field=><code>{field}</code>)}. A clear or reset choice must be used on its own.</p>)}{route.options.length>0 ? <dl>{route.options.map(field => <div><dt><code>{field.name}</code><span>{types[field.type] ?? 'Value'} · {field.required ? 'Required' : 'Optional'}</span></dt><dd>{field.description}{field.choices?.length>0 && <span>Choices: {field.choices.map(choice=>choice.name).join(', ')}</span>}{field.min_value !== undefined && <span>Minimum: {field.min_value}</span>}{field.max_value !== undefined && field.max_value !== 9007199254740991 && <span>Maximum: {field.max_value}</span>}</dd></div>)}</dl> : <p class="usage-permission">No additional command fields. A command may open a form or other controls.</p>}</section>)}</div></details>)}
 </section>
 <script>
   const root = document.querySelector<HTMLElement>('.slash-reference');
-  if(root){const input=root.querySelector<HTMLInputElement>('input')!;const filter=root.querySelector<HTMLButtonElement>('.profile-filter')!;const groups=[...root.querySelectorAll<HTMLDetailsElement>('.slash-group')];let personal=false;const update=()=>{const terms=input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);let total=0;for(const group of groups){let count=0;for(const row of group.querySelectorAll<HTMLElement>('.slash-route')){const match=(!personal||row.dataset.portable==='true')&&terms.every(term=>row.dataset.search?.includes(term));row.hidden=!match;if(match)count++;}group.hidden=count===0;if(terms.length)group.open=count>0;total+=count;}root.querySelector('.slash-count')!.textContent=`${total} matching command paths`;};input.addEventListener('input',update);filter.addEventListener('click',()=>{personal=!personal;filter.setAttribute('aria-pressed',String(personal));update();});}
+  if (root) {
+    const input = root.querySelector<HTMLInputElement>('input')!;
+    const filter = root.querySelector<HTMLButtonElement>('.profile-filter')!;
+    const groups = [...root.querySelectorAll<HTMLDetailsElement>('.slash-group')];
+    let personal = false;
+    const update = () => {
+      const terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let total = 0;
+      for (const group of groups) {
+        let count = 0;
+        for (const row of group.querySelectorAll<HTMLElement>('.slash-route')) {
+          const match = (!personal || row.dataset.portable === 'true') && terms.every(term => row.dataset.search?.includes(term));
+          row.hidden = !match;
+          if (match) count++;
+        }
+        group.hidden = count === 0;
+        if (terms.length) group.open = count > 0;
+        total += count;
+      }
+      root.querySelector('.slash-count')!.textContent = `${total} matching command paths`;
+    };
+    const revealAnchor = () => {
+      let id: string;
+      try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+      const row = document.getElementById(id);
+      if (!row || !root.contains(row) || !row.classList.contains('slash-route')) return;
+      input.value = '';
+      personal = false;
+      filter.setAttribute('aria-pressed', 'false');
+      update();
+      row.closest<HTMLDetailsElement>('.slash-group')!.open = true;
+      requestAnimationFrame(() => row.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    };
+    input.addEventListener('input', update);
+    filter.addEventListener('click', () => {
+      personal = !personal;
+      filter.setAttribute('aria-pressed', String(personal));
+      update();
+    });
+    window.addEventListener('hashchange', revealAnchor);
+    revealAnchor();
+  }
 </script>

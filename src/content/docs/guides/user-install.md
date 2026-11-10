@@ -16,7 +16,7 @@ Discord and server settings can restrict external application commands. If the c
 
 ## What you can use
 
-Supported personal roots include **math**, **convert**, **repost**, **Last.fm**, **family**, **skin**, **games** and **tools**, alongside help and profile lookups. Some roots split into a second group because of Discord command limits. Use the picker’s available subcommands rather than guessing prefix syntax in a slash field.
+Supported personal roots include **math**, **convert**, **repost**, **Last.fm**, **family**, **skin**, **games** and **tools**, alongside help and profile lookups. Related actions sit together in feature groups, such as `/family pets list` and `/games chess`. Use the picker’s available subcommands rather than guessing prefix syntax in a slash field.
 
 The [typed slash reference](/guides/slash-commands/) shows actual command paths, required fields and whether each route supports profile installation. A prefix alias is not necessarily a slash-command name.
 

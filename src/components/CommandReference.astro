@@ -1,12 +1,15 @@
 ---
-interface Props { command: { name: string; desc: string[]; perm: string; aliases: string[]; dash: string; subs: { syntax: string; desc: string; ex: string; perm: string }[] } }
+interface Props { command: { name: string; desc: string[]; perm: string; aliases: string[]; dash: string; subs: { syntax: string; desc: string; ex: string; perm: string; slash: string[][] }[] } }
 const { command: cmd } = Astro.props;
 const permission = (value: string) => value && value !== '-' ? value : 'Anyone';
 ---
 <div class="command-reference">
   <p>{cmd.desc.join(' ')}</p>
   <dl class="command-meta"><div><dt>Permission</dt><dd>{permission(cmd.perm)}</dd></div>{cmd.aliases.length > 0 && <div><dt>Aliases</dt><dd>{cmd.aliases.map(alias => <code>{alias}</code>)}</dd></div>}{cmd.dash !== '-' && <div><dt>Dashboard</dt><dd><a href="https://flanker.wtf/servers">Choose your server</a><span class="command-path">{cmd.dash === '/' ? 'Overview' : cmd.dash}</span></dd></div>}</dl>
-  <div class="command-usages">{cmd.subs.map(sub => <details class="command-usage" open={cmd.subs.length === 1}><summary><code>{sub.syntax}</code><span aria-hidden="true">+</span></summary><div><p>{sub.desc}</p>{permission(sub.perm) !== permission(cmd.perm) && <p class="usage-permission">Permission: {permission(sub.perm)}</p>}{sub.ex && <div class="command-example"><span>Example</span><code>,{sub.ex}</code><button type="button" class="copy-command" data-copy={',' + sub.ex} aria-label={`Copy example for ${sub.syntax}`}>Copy</button></div>}</div></details>)}</div>
+  <div class="command-usages">{cmd.subs.map(sub => <details class="command-usage" open={cmd.subs.length === 1}><summary><code>{sub.syntax}</code><span aria-hidden="true">+</span></summary><div><p>{sub.desc}</p>{permission(sub.perm) !== permission(cmd.perm) && <p class="usage-permission">Permission: {permission(sub.perm)}</p>}
+    <dl class="command-meta"><div><dt>Mention</dt><dd><code>@Flanker {sub.syntax}</code></dd></div></dl>
+    {sub.slash.length === 1 ? <p class="usage-permission">Slash: <a data-astro-prefetch="false" href={`/guides/slash-commands/#slash-${sub.slash[0].join('/')}`}><code>/{sub.slash[0].join(' ')}</code></a></p> : <details class="slash-equivalents"><summary>Typed slash actions ({sub.slash.length})</summary><ul>{sub.slash.map(path => <li><a data-astro-prefetch="false" href={`/guides/slash-commands/#slash-${path.join('/')}`}><code>/{path.join(' ')}</code></a></li>)}</ul></details>}
+    {sub.ex && <div class="command-example"><span>Example</span><code>,{sub.ex}</code><button type="button" class="copy-command" data-copy={',' + sub.ex} aria-label={`Copy example for ${sub.syntax}`}>Copy</button></div>}</div></details>)}</div>
 </div>
 <script>
   document.addEventListener('click', async event => {

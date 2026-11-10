@@ -14,11 +14,16 @@ Commands are grouped by feature, with no numbered overflow menus. For example:
 | Message activity | `/messages` |
 | Staff task progress | `/stafftasks` |
 | Caption an image | `/media caption` |
+| Translate text | `/server-tools translate text` |
 | Ticket option transcript destination | `/ticket options set-log` |
 | Family pets | `/family pets list` |
 | Chess, including My Apps | `/games chess` |
 
 Every public prefix command has a typed slash equivalent. Open a command in the [command reference](/commands/) to see its prefix syntax, mention syntax and links to the matching slash actions. Prefix aliases are also searchable below. For mention commands, mention Flanker and follow it with the same command and arguments you would use after your prefix.
+
+Prefix reminders and command help use the current slash paths. For example, `,tr en bonjour` maps to `/server-tools translate text language:en text:bonjour`, and its mention version is `@Flanker translate en bonjour`. The `tr` alias is searchable below. Older `/utility` menus have been replaced by feature groups such as `/server-tools`.
+
+To translate a specific message with slash commands, copy its text into `/server-tools translate text`. Discord does not pass reply targets to slash commands. Prefix and mention commands can translate a message you reply to; replying with just `,tr` defaults to English.
 
 ### Permissions and context
 

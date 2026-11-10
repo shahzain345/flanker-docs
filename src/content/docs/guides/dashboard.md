@@ -11,7 +11,7 @@ without memorising commands.
 
 1. Go to [flanker.wtf/dashboard](https://flanker.wtf/dashboard).
 2. Sign in with Discord.
-3. Pick a server you manage. You need Manage Server there (or be the owner).
+3. Pick a server where Flanker is installed. Available settings follow your permissions and trusted roles.
 
 ## What you can configure
 
@@ -34,7 +34,7 @@ pick your server, and choose the section:
 | **Antiraid** | Raid detection thresholds, captcha and raid responses |
 | **Honeypot** | The trap channel and the action taken on posters |
 | **Filters** | Word, link, invite and spam filters |
-| **Fake permissions** | Command access that only flanker honours |
+| **Fake permissions** | Command access that only flanker honours. Owner-level members and antinuke admins can manage all grants. Flanker Admins can manage ordinary grants and remove any. |
 | **Moderation** | Moderation defaults, settings and access |
 | **Moderation → Jail** | Jail setup and jailed-member handling |
 | **Moderation → Logs** | Log channels per event group |
@@ -85,3 +85,11 @@ The current dashboard uses separate setup and activity views where a module need
 **Welcome** starts with channels: select one to preview, then edit its message. **Tickets** separates panels, server defaults and blocked members. Select one panel, then choose its message/posting or ticket types. Activity has open and recently closed tickets. See [welcome setup](/guides/welcome/) and [ticket setup](/guides/tickets/).
 
 Security status and permission checks still apply. A dashboard’s appearance does not grant access to settings your account cannot change.
+
+## Managing fake permissions
+
+Open **Moderation > Fake permissions**. Antinuke admins can use this page even without Discord Manage Server. Choose **Add a role**, then turn on the permissions that role needs. These permissions apply only inside Flanker and never unlock security settings.
+
+Owner-level members and antinuke admins can also grant fake Administrator, Manage Server and Manage Roles. Flanker Admins can remove those permissions but cannot grant them. Removing every fake permission requires owner-level or antinuke-admin trust and confirmation.
+
+The same rules apply to slash, prefix and mention commands. For example, use `fakepermissions add @Mods ban_members, kick_members` with your server prefix, or `@flanker fakepermissions add @Mods ban_members, kick_members`. Find the current typed slash equivalents in the [command reference](/commands/security/#fakepermissions). Real or fake Administrator alone does not grant access to this configuration.

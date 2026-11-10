@@ -3877,7 +3877,7 @@
       "fakepermissions",
       "add"
     ],
-    "description": "Gives a role fake permissions. Administrator, Manage Server and Manage Roles can only be g",
+    "description": "Gives fake permissions. Antinuke admins and owner-level members can also grant admin-level",
     "portable": false,
     "options": [
       {
@@ -3895,7 +3895,7 @@
         "min_length": 1
       }
     ],
-    "details": "Gives a role fake permissions. Administrator, Manage Server and Manage Roles can only be given by the owner.",
+    "details": "Gives fake permissions. Antinuke admins and owner-level members can also grant admin-level access.",
     "aliases": [
       "fakeperms",
       "fp",
@@ -3943,10 +3943,10 @@
       "fakepermissions",
       "reset"
     ],
-    "description": "Removes every fake permission.",
+    "description": "Removes every fake permission after confirmation.",
     "portable": false,
     "options": [],
-    "details": "Removes every fake permission.",
+    "details": "Removes every fake permission after confirmation.",
     "aliases": [
       "fakeperms",
       "fp",
@@ -9436,7 +9436,7 @@
       "rolecommands",
       "add"
     ],
-    "description": "Blocks command roots and their subcommands for that member or role. Alias: rc. Use names w",
+    "description": "Allows the listed role to use command roots and their subcommands without their normal per",
     "portable": false,
     "options": [
       {
@@ -9460,7 +9460,7 @@
         "required": false
       }
     ],
-    "details": "Blocks command roots and their subcommands for that member or role. Alias: rc. Use names without a prefix. Member and role mentions select the target type.; rc add @member ban, timeout",
+    "details": "Allows the listed role to use command roots and their subcommands without their normal permissions. Only listed roles can use them. A member target instead creates a direct block. Alias: rc. Security checks still apply.; rc add @member ban, timeout",
     "aliases": [
       "rc",
       "restrictcommand"
@@ -9516,7 +9516,7 @@
       "rolecommands",
       "remove"
     ],
-    "description": "Removes only those direct member or role rules. Supports the same user/role selectors. Rem",
+    "description": "Removes the selected role allowlist entry or member block. Removing the last role entry re",
     "portable": false,
     "options": [
       {
@@ -9540,7 +9540,7 @@
         "required": false
       }
     ],
-    "details": "Removes only those direct member or role rules. Supports the same user/role selectors. Removing a member rule does not bypass an existing role rule.; rc remove @member ban",
+    "details": "Removes the selected role allowlist entry or member block. Removing the last role entry restores normal command access. Removing a member block does not bypass a role allowlist.; rc remove @member ban",
     "aliases": [
       "rc",
       "restrictcommand"
@@ -9563,7 +9563,7 @@
       "rolecommands",
       "list"
     ],
-    "description": "Lists both member and role restrictions. Recovery commands and help cannot be blocked. Ser",
+    "description": "Lists allowed roles and blocked members. Recovery commands and help stay available; admini",
     "portable": false,
     "options": [
       {
@@ -9575,7 +9575,7 @@
         "max_value": 9007199254740991
       }
     ],
-    "details": "Lists both member and role restrictions. Recovery commands and help cannot be blocked. Server managers and Flanker Admins retain access.; rc list",
+    "details": "Lists allowed roles and blocked members. Recovery commands and help stay available; administrators cannot bypass role allowlists.; rc list",
     "aliases": [
       "rc",
       "restrictcommand"
@@ -17772,109 +17772,6 @@
     "required_groups": []
   },
   {
-    "command": "quote",
-    "syntax": "quote [message link or ID] [--font geist/noto/serif/mono] [--layout wide/square/portrait] [--color] [--light] [--flip] [--bold] [--no-watermark]",
-    "path": [
-      "images",
-      "quote"
-    ],
-    "description": "Quotes a readable message in this server as a GIF. Prefix commands can use a replied messa",
-    "portable": false,
-    "options": [
-      {
-        "type": 3,
-        "name": "message-link-or-id",
-        "description": "message link or ID",
-        "required": true,
-        "max_length": 4000,
-        "min_length": 1
-      },
-      {
-        "type": 3,
-        "name": "font",
-        "description": "Value for --font",
-        "required": false,
-        "max_length": 4000,
-        "min_length": 1,
-        "choices": [
-          {
-            "name": "geist",
-            "value": "geist"
-          },
-          {
-            "name": "noto",
-            "value": "noto"
-          },
-          {
-            "name": "serif",
-            "value": "serif"
-          },
-          {
-            "name": "mono",
-            "value": "mono"
-          }
-        ]
-      },
-      {
-        "type": 3,
-        "name": "layout",
-        "description": "Value for --layout",
-        "required": false,
-        "max_length": 4000,
-        "min_length": 1,
-        "choices": [
-          {
-            "name": "wide",
-            "value": "wide"
-          },
-          {
-            "name": "square",
-            "value": "square"
-          },
-          {
-            "name": "portrait",
-            "value": "portrait"
-          }
-        ]
-      },
-      {
-        "type": 5,
-        "name": "color",
-        "description": "Value for --color",
-        "required": false
-      },
-      {
-        "type": 5,
-        "name": "light",
-        "description": "Value for --light",
-        "required": false
-      },
-      {
-        "type": 5,
-        "name": "flip",
-        "description": "Value for --flip",
-        "required": false
-      },
-      {
-        "type": 5,
-        "name": "bold",
-        "description": "Value for --bold",
-        "required": false
-      },
-      {
-        "type": 5,
-        "name": "no-watermark",
-        "description": "Value for --no-watermark",
-        "required": false
-      }
-    ],
-    "details": "Quotes a readable message in this server as a GIF. Prefix commands can use a replied message; slash commands need its link or ID. Font, layout, colour, light theme, avatar side, bold text and watermark controls stay available.",
-    "aliases": [
-      "miq"
-    ],
-    "required_groups": []
-  },
-  {
     "command": "asciify",
     "syntax": "asciify (text)",
     "path": [
@@ -19975,6 +19872,122 @@
     "details": "Reposts the video.",
     "aliases": [
       "rp"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "quote",
+    "syntax": "quote [message link or ID] [--text (text)] [--author (member)] [--font geist/noto/serif/mono] [--layout wide/square/portrait] [--color] [--light] [--flip] [--bold] [--no-watermark]",
+    "path": [
+      "quote"
+    ],
+    "description": "Quotes a readable message or supplied text as a GIF. In My Apps DMs and group chats, use t",
+    "portable": true,
+    "options": [
+      {
+        "type": 3,
+        "name": "message-link-or-id",
+        "description": "message link or ID",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1
+      },
+      {
+        "type": 3,
+        "name": "text",
+        "description": "Value for --text",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "author",
+        "description": "Value for --author",
+        "required": false
+      },
+      {
+        "type": 3,
+        "name": "font",
+        "description": "Value for --font",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "geist",
+            "value": "geist"
+          },
+          {
+            "name": "noto",
+            "value": "noto"
+          },
+          {
+            "name": "serif",
+            "value": "serif"
+          },
+          {
+            "name": "mono",
+            "value": "mono"
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "name": "layout",
+        "description": "Value for --layout",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "wide",
+            "value": "wide"
+          },
+          {
+            "name": "square",
+            "value": "square"
+          },
+          {
+            "name": "portrait",
+            "value": "portrait"
+          }
+        ]
+      },
+      {
+        "type": 5,
+        "name": "color",
+        "description": "Value for --color",
+        "required": false
+      },
+      {
+        "type": 5,
+        "name": "light",
+        "description": "Value for --light",
+        "required": false
+      },
+      {
+        "type": 5,
+        "name": "flip",
+        "description": "Value for --flip",
+        "required": false
+      },
+      {
+        "type": 5,
+        "name": "bold",
+        "description": "Value for --bold",
+        "required": false
+      },
+      {
+        "type": 5,
+        "name": "no-watermark",
+        "description": "Value for --no-watermark",
+        "required": false
+      }
+    ],
+    "details": "Quotes a readable message or supplied text as a GIF. In My Apps DMs and group chats, use text and optionally author; Discord does not pass reply targets or grant access to your message history. Message links and IDs only work where Flanker can read the original conversation. Font, layout, colour, light theme, avatar side, bold text and watermark controls stay available.",
+    "aliases": [
+      "miq"
     ],
     "required_groups": []
   },
@@ -22118,12 +22131,12 @@
   },
   {
     "command": "afk",
-    "syntax": "afk [reason]",
+    "syntax": "afk [reason] [--clear]",
     "path": [
       "afk"
     ],
-    "description": "Goes AFK.",
-    "portable": false,
+    "description": "Sets AFK. In DMs and group chats through My Apps, applies across Flanker servers. Use --cl",
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -22132,9 +22145,15 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 5,
+        "name": "clear",
+        "description": "Value for --clear",
+        "required": false
       }
     ],
-    "details": "Goes AFK.",
+    "details": "Sets AFK. In DMs and group chats through My Apps, applies across Flanker servers. Use --clear on its own to end AFK, including from a DM.",
     "aliases": [],
     "required_groups": []
   },
@@ -30781,13 +30800,13 @@
   },
   {
     "command": "media",
-    "syntax": "media caption [image] (text) [--bottom] [--black]",
+    "syntax": "media caption [image] (text) [--bottom] [--black] [--member (member)]",
     "path": [
       "media",
       "caption"
     ],
     "description": "Adds a caption and returns a GIF.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -30815,6 +30834,12 @@
         "type": 5,
         "name": "black",
         "description": "Value for --black",
+        "required": false
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
         "required": false
       },
       {
@@ -30859,13 +30884,13 @@
   },
   {
     "command": "media",
-    "syntax": "media magik [image]",
+    "syntax": "media magik [image] [--member (member)]",
     "path": [
       "media",
       "magik"
     ],
     "description": "Applies a strong liquid distortion. Every media tool uses the image you attach, link or re",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -30874,6 +30899,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -30917,13 +30948,13 @@
   },
   {
     "command": "media",
-    "syntax": "media speechbubble [image]",
+    "syntax": "media speechbubble [image] [--member (member)]",
     "path": [
       "media",
       "speechbubble"
     ],
     "description": "Adds a speech bubble.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -30932,6 +30963,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -30975,13 +31012,13 @@
   },
   {
     "command": "media",
-    "syntax": "media gif [image]",
+    "syntax": "media gif [image] [--member (member)]",
     "path": [
       "media",
       "gif"
     ],
     "description": "Turns an image or video into a gif.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -30990,6 +31027,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31033,13 +31076,13 @@
   },
   {
     "command": "media",
-    "syntax": "media (grayscale/invert/reverse/blur) [media]",
+    "syntax": "media (grayscale/invert/reverse/blur) [media] [--member (member)]",
     "path": [
       "media",
       "effects"
     ],
     "description": "Effects. Each also works on its own, like invert.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31074,6 +31117,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31117,13 +31166,13 @@
   },
   {
     "command": "media",
-    "syntax": "media deepfry [media]",
+    "syntax": "media deepfry [media] [--member (member)]",
     "path": [
       "media",
       "deepfry"
     ],
     "description": "Crushes the colours and adds grain. Also fry.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31132,6 +31181,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31175,13 +31230,13 @@
   },
   {
     "command": "media",
-    "syntax": "media jpeg [image]",
+    "syntax": "media jpeg [image] [--member (member)]",
     "path": [
       "media",
       "jpeg"
     ],
     "description": "Heavy JPEG compression.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31190,6 +31245,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31233,13 +31294,13 @@
   },
   {
     "command": "media",
-    "syntax": "media pixelate [media] [size 2-64]",
+    "syntax": "media pixelate [media] [size 2-64] [--member (member)]",
     "path": [
       "media",
       "pixelate"
     ],
     "description": "Big pixels. Also pixel.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31256,6 +31317,12 @@
         "required": false,
         "min_value": 2,
         "max_value": 64
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31299,13 +31366,13 @@
   },
   {
     "command": "media",
-    "syntax": "media (flip/mirror) [media]",
+    "syntax": "media (flip/mirror) [media] [--member (member)]",
     "path": [
       "media",
       "orientation"
     ],
     "description": "Flips upside down, or mirrors left to right. mirror works on its own.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31332,6 +31399,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31375,13 +31448,13 @@
   },
   {
     "command": "media",
-    "syntax": "media rotate [media] [90/180/270]",
+    "syntax": "media rotate [media] [90/180/270] [--member (member)]",
     "path": [
       "media",
       "rotate"
     ],
     "description": "Turns it.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31412,6 +31485,12 @@
             "value": "270"
           }
         ]
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31455,13 +31534,13 @@
   },
   {
     "command": "media",
-    "syntax": "media wide [media] [factor 1.2-5]",
+    "syntax": "media wide [media] [factor 1.2-5] [--member (member)]",
     "path": [
       "media",
       "wide"
     ],
     "description": "Stretches it sideways. Also stretch.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31475,6 +31554,12 @@
         "type": 10,
         "name": "factor",
         "description": "factor 1.2-5",
+        "required": false
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
         "required": false
       },
       {
@@ -31519,13 +31604,13 @@
   },
   {
     "command": "media",
-    "syntax": "media sepia [media]",
+    "syntax": "media sepia [media] [--member (member)]",
     "path": [
       "media",
       "sepia"
     ],
     "description": "Old photo colours.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31534,6 +31619,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31577,13 +31668,13 @@
   },
   {
     "command": "media",
-    "syntax": "media (bulge/pinch/swirl) [image] [strength]",
+    "syntax": "media (bulge/pinch/swirl) [image] [strength] [--member (member)]",
     "path": [
       "media",
       "distort"
     ],
     "description": "Bulges, pinches or swirls the middle. Also explode and implode.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31619,6 +31710,12 @@
         "type": 10,
         "name": "strength",
         "description": "strength",
+        "required": false
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
         "required": false
       },
       {
@@ -31663,13 +31760,13 @@
   },
   {
     "command": "media",
-    "syntax": "media spin [image]",
+    "syntax": "media spin [image] [--member (member)]",
     "path": [
       "media",
       "spin"
     ],
     "description": "Turns a still image into a spinning gif.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31678,6 +31775,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31721,13 +31824,13 @@
   },
   {
     "command": "media",
-    "syntax": "media speed [gif or video] (0.5-4)",
+    "syntax": "media speed [gif or video] (0.5-4) [--member (member)]",
     "path": [
       "media",
       "speed"
     ],
     "description": "Changes the speed.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 10,
@@ -31742,6 +31845,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,
@@ -31785,13 +31894,13 @@
   },
   {
     "command": "media",
-    "syntax": "media info [media]",
+    "syntax": "media info [media] [--member (member)]",
     "path": [
       "media",
       "info"
     ],
     "description": "Shows size and format.",
-    "portable": false,
+    "portable": true,
     "options": [
       {
         "type": 3,
@@ -31800,6 +31909,12 @@
         "required": false,
         "max_length": 4000,
         "min_length": 1
+      },
+      {
+        "type": 6,
+        "name": "member",
+        "description": "Value for --member",
+        "required": false
       },
       {
         "type": 11,

@@ -76,6 +76,10 @@ Flanker’s own creators are included automatically. Add only external creators 
 
 Review the held member before verifying them. End raid mode once staff have checked the situation. If a channel or role cannot be restored, read the recovery result and fix the specific permission or hierarchy problem instead of repeatedly toggling protection.
 
+When raid mode ends, an incomplete channel restore shows **Retry restoration** instead of **End raid**. The remaining count refers to channel restoration, not an active raid. Fix Flanker's channel access or Manage Channels permission, then retry. Once restoration completes, the alert has no recovery button.
+
+Raid reports are retained for retry if delivery fails, independently of channel restoration. If the antiraid log is unavailable, restore its access or select a working log channel. Reports awaiting delivery survive a bot restart.
+
 The manual `,raid` command is a moderation action: it acts on everyone who joined within the supplied duration and starts raid mode. Do not use it as a harmless test command.
 
 ## Verify your setup

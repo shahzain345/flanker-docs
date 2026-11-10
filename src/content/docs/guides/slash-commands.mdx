@@ -14,6 +14,8 @@ Commands are grouped by feature, with no numbered overflow menus. For example:
 | Message activity | `/messages` |
 | Staff task progress | `/stafftasks` |
 | Caption an image | `/media caption` |
+| Quote supplied text | `/quote text:your words` |
+| AFK across servers from a DM | `/afk reason:studying` |
 | Translate text | `/server-tools translate text` |
 | Ticket option transcript destination | `/ticket options set-log` |
 | Family pets | `/family pets list` |
@@ -33,7 +35,7 @@ Slash and mention commands use the same feature handlers and permission checks a
 
 ### Differences when entering arguments
 
-Slash commands have named fields rather than a free-form command line. For quote and giveaway edits, supply the message link or ID in the target field; Discord does not pass the message you are replying to as slash-command context. Optional media fields can be left empty when the command can use the current channel’s recent media.
+Slash commands have named fields rather than a free-form command line. Giveaway edits require their message target. Quote accepts either a readable message link or ID, or supplied text with an optional author picker. Discord does not pass the message you are replying to as slash-command context or grant private message-history access through My Apps. Media tools accept a file, source URL or member picker and otherwise use your avatar.
 
 Some destinations accept a member, role or a clear/default choice. Discord shows those as separate optional fields. Supply the combination described in the reference; a clear or reset choice must be used on its own. Multi-role giveaway requirements can be changed through their dedicated edit actions.
 
@@ -44,3 +46,18 @@ Polls offer up to 10 typed answers and choose offers up to 25 typed choices. Lar
 Search by slash path, prefix name, alias or field name. Links from the command reference open the matching action and show its fields.
 
 <SlashReference />
+
+## Limit a command to staff roles
+
+Use `/commands rolecommands add` with the **role** field and a command name. For example, select your Moderators role and enter `ban` in **command-command**. The prefix equivalent is `,rc add @Moderators ban`; the mention equivalent is `@flanker rc add @Moderators ban`.
+
+For a command with RC role rules:
+
+- Members with any listed role may run it without its usual command permission.
+- Everyone without a listed role is blocked, including administrators and Flanker Admins.
+- Antinuke, protected members and roles, target hierarchy, channel visibility and Flanker's own permissions still apply. RC cannot grant security access or bypass an explicit owner requirement.
+- Only the server owner can grant role-management commands through RC.
+
+Rules cover the command root, its aliases and subcommands in that server. Use `/commands rolecommands list` or `,rc list` to review them. Removing the last role rule restores normal command access. Recovery commands such as `rc`, `help` and `access` stay available.
+
+A **member** target has a different purpose: it blocks that member. It does not add them to the role allowlist. Existing member blocks and separate command/module switches still apply.

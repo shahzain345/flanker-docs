@@ -7028,12 +7028,12 @@
   },
   {
     "command": "history",
-    "syntax": "history [member]",
+    "syntax": "history [member] [page]",
     "path": [
       "cases",
       "history"
     ],
-    "description": "Lists every case for the member.",
+    "description": "Every case for the member, a few per page: when, who, why, how long, any evidence, and a l",
     "portable": false,
     "options": [
       {
@@ -7041,9 +7041,17 @@
         "name": "member",
         "description": "member",
         "required": false
+      },
+      {
+        "type": 4,
+        "name": "page",
+        "description": "page",
+        "required": false,
+        "min_value": 1,
+        "max_value": 9007199254740991
       }
     ],
-    "details": "Lists every case for the member.",
+    "details": "Every case for the member, a few per page: when, who, why, how long, any evidence, and a link to each case's modlog post.",
     "aliases": [
       "cases",
       "modlogs"
@@ -7057,7 +7065,7 @@
       "cases",
       "case"
     ],
-    "description": "Shows the case.",
+    "description": "Shows the case with its evidence. Modlog posts for new cases have buttons to undo the acti",
     "portable": false,
     "options": [
       {
@@ -7069,7 +7077,7 @@
         "max_value": 9007199254740991
       }
     ],
-    "details": "Shows the case.",
+    "details": "Shows the case with its evidence. Modlog posts for new cases have buttons to undo the action, add evidence and open the member's history.",
     "aliases": [],
     "required_groups": []
   },

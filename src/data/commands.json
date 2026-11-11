@@ -3026,9 +3026,9 @@
     ],
     "subs": [
       {
-        "syntax": "history [member]",
+        "syntax": "history [member] [page]",
         "perm": "Timeout Members",
-        "desc": "Lists every case for the member.",
+        "desc": "Every case for the member, a few per page: when, who, why, how long, any evidence, and a link to each case's modlog post.",
         "ex": "",
         "slash": [
           [
@@ -3056,7 +3056,7 @@
       {
         "syntax": "case (number)",
         "perm": "Timeout Members",
-        "desc": "Shows the case.",
+        "desc": "Shows the case with its evidence. Modlog posts for new cases have buttons to undo the action, add evidence and open the member's history.",
         "ex": "case 42",
         "slash": [
           [
@@ -15874,7 +15874,7 @@
     "dash": "-",
     "perm": "Timeout Members",
     "desc": [
-      "Proof on a case: text and images. Images are kept by flanker, so the links never expire."
+      "Evidence on a case: text, links and images. Images are kept by flanker, so the links never expire. The modlog post's Add evidence button also takes videos and message links (saved with a copy of the message)."
     ],
     "subs": [
       {

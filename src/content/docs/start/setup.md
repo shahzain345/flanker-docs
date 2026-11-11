@@ -49,6 +49,18 @@ You can always mention the bot instead of using the prefix.
 Everything above can also be done on the
 [dashboard](https://flanker.wtf/dashboard) with a live preview.
 
+## Setup panels
+
+Run `,setup` (Manage Server) to see everything flanker can do and pick a
+module. Most modules also open their panel from the bare command, like
+`,autorole` or `,starboard panel`.
+
+A panel lists each setting on one line with what it's set to now. On/off
+settings have a **Turn on**/**Turn off** button right there. Press **Edit**
+(or **Set up**) on any other line to open that setting with its menu or
+form, then **Back** to return. Every change runs the matching command as
+you, so the usual permission checks apply.
+
 ## Staff and access
 
 flanker separates "who can run a command" from Discord's own permissions where

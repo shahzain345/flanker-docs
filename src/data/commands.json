@@ -262,7 +262,7 @@
     "dash": "/utility",
     "perm": "Manage Server",
     "desc": [
-      "Shows or changes the prefix flanker answers to in this server."
+      "Shows or changes the prefix flanker answers to in this server. Run `prefix settings` for a setup panel."
     ],
     "subs": [
       {
@@ -378,7 +378,7 @@
     "dash": "/antinuke",
     "perm": "Server owner or antinuke admin",
     "desc": [
-      "Stops nukes: mass bans and kicks, deleted channels and roles, dangerous permission grants, webhook and emoji spam, vanity changes and rogue bots. Whoever trips a limit is punished and the damage is undone where possible."
+      "Stops nukes: mass bans and kicks, deleted channels and roles, dangerous permission grants, webhook and emoji spam, vanity changes and rogue bots. Whoever trips a limit is punished and the damage is undone where possible. Run `antinuke` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -796,7 +796,7 @@
     "dash": "/antiraid",
     "perm": "Manage Server (real)",
     "desc": [
-      "Catches raids: waves of new accounts joining and chat floods. Suspicious joiners are held behind a captcha, kicked or banned, and the server can lock itself down until the raid passes."
+      "Catches raids: waves of new accounts joining and chat floods. Suspicious joiners are held behind a captcha, kicked or banned, and the server can lock itself down until the raid passes. Run `antiraid` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -1146,7 +1146,7 @@
     "dash": "/honeypot",
     "perm": "Manage Server (real)",
     "desc": [
-      "A trap channel only spam bots and hacked accounts post in. Anyone who sends a message there is punished."
+      "A trap channel only spam bots and hacked accounts post in. Anyone who sends a message there is punished. Run `honeypot` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -1222,7 +1222,7 @@
     "dash": "/permissions",
     "perm": "Server owner, antinuke admin or Flanker Admin",
     "desc": [
-      "Lets staff use flanker's commands as if they had a permission, without giving them the real Discord permission. Never unlocks security settings."
+      "Lets staff use flanker's commands as if they had a permission, without giving them the real Discord permission. Never unlocks security settings. Run `fakepermissions` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -1287,7 +1287,7 @@
     "dash": "/filter",
     "perm": "Manage Server (real)",
     "desc": [
-      "Deletes blocked words, links, invites, spam, caps, mass mentions, emoji spam and more. Strict: it sees through spacing, look-alike letters and other tricks."
+      "Deletes blocked words, links, invites, spam, caps, mass mentions, emoji spam and more. Strict: it sees through spacing, look-alike letters and other tricks. Run `filter` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -1845,17 +1845,30 @@
     "dash": "/moderation/jail",
     "perm": "Administrator",
     "desc": [
-      "Creates the jail role, the jail channel and the jail log."
+      "Opens the setup hub: every flanker module, set up with buttons and menus. `setup jail` creates the jail role, jail channel and jail log."
     ],
     "subs": [
       {
         "syntax": "setup",
+        "perm": "Manage Server",
+        "desc": "Opens the setup hub with every module and its status.",
+        "ex": "",
+        "slash": [
+          [
+            "setup",
+            "show"
+          ]
+        ]
+      },
+      {
+        "syntax": "setup jail",
         "perm": "Administrator",
         "desc": "Creates everything the jail needs and hides other channels from jailed members.",
         "ex": "",
         "slash": [
           [
-            "setup"
+            "setup",
+            "jail"
           ]
         ]
       }
@@ -1894,7 +1907,7 @@
     "dash": "/moderation",
     "perm": "Manage Server (real)",
     "desc": [
-      "Moderation settings."
+      "Moderation settings. Run `settings` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -2052,7 +2065,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Custom messages for moderation actions: what the member gets in DMs and what's posted in the channel."
+      "Custom messages for moderation actions: what the member gets in DMs and what's posted in the channel. Run `invoke` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3195,7 +3208,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Automatically reposts deleted messages, message edits and removed reactions to chosen destinations. Use a staff-only channel for deleted content."
+      "Automatically reposts deleted messages, message edits and removed reactions to chosen destinations. Use a staff-only channel for deleted content. Run `autosnipe` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3273,7 +3286,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Your own shortcuts for commands."
+      "Your own shortcuts for commands. Run `alias` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3366,13 +3379,13 @@
     "dash": "/welcome",
     "perm": "Manage Server",
     "desc": [
-      "Messages posted when someone joins. Supports embeds, buttons and layouts."
+      "Messages posted when someone joins. Supports embeds, buttons and layouts. Run `welcome add` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
         "syntax": "welcome add (channel) (message) [--self_destruct 6-60]",
         "perm": "Manage Server",
-        "desc": "Sets the welcome message for a channel.",
+        "desc": "Sets the welcome message for a channel. Without a message it opens a setup panel with menus and buttons; without a channel it uses this one.",
         "ex": "welcome add #welcome Welcome to {guild.name}, {user.mention}!",
         "slash": [
           [
@@ -3396,7 +3409,7 @@
       {
         "syntax": "welcome view (channel)",
         "perm": "Manage Server",
-        "desc": "Shows the message's script.",
+        "desc": "Opens the setup panel for that channel, with a link to edit the message in Studio.",
         "ex": "",
         "slash": [
           [
@@ -3442,13 +3455,13 @@
     "dash": "/welcome",
     "perm": "Manage Server",
     "desc": [
-      "Messages posted when someone leaves."
+      "Messages posted when someone leaves. Run `leave add` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
         "syntax": "leave add (channel) (message) [--self_destruct 6-60]",
         "perm": "Manage Server",
-        "desc": "Sets the leave message for a channel.",
+        "desc": "Sets the leave message for a channel. Without a message it opens a setup panel.",
         "ex": "leave add #general {user.name} left.",
         "slash": [
           [
@@ -3474,7 +3487,7 @@
       {
         "syntax": "leave view (channel)",
         "perm": "Manage Server",
-        "desc": "Shows the message's script.",
+        "desc": "Opens the setup panel for that channel.",
         "ex": "",
         "slash": [
           [
@@ -3510,13 +3523,13 @@
     "dash": "/welcome",
     "perm": "Manage Server",
     "desc": [
-      "Messages posted when someone boosts the server."
+      "Messages posted when someone boosts the server. Run `boosts add` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
         "syntax": "boosts add (channel) (message) [--self_destruct 6-60]",
         "perm": "Manage Server",
-        "desc": "Sets the boost message for a channel.",
+        "desc": "Sets the boost message for a channel. Without a message it opens a setup panel.",
         "ex": "",
         "slash": [
           [
@@ -3542,7 +3555,7 @@
       {
         "syntax": "boosts view (channel)",
         "perm": "Manage Server",
-        "desc": "Shows the message's script.",
+        "desc": "Opens the setup panel for that channel.",
         "ex": "",
         "slash": [
           [
@@ -3578,7 +3591,7 @@
     "dash": "/welcome",
     "perm": "Manage Server",
     "desc": [
-      "Greets members when they join by default. Each channel can instead greet their first message there. Join greets wait for captcha verification and pause during raids."
+      "Greets members when they join by default. Each channel can instead greet their first message there. Join greets wait for captcha verification and pause during raids. Run `greet` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3721,7 +3734,7 @@
     "dash": "/welcome",
     "perm": "Manage Roles",
     "desc": [
-      "Roles given to new members once they're through antiraid's captcha. Roles with dangerous permissions can't be used."
+      "Roles given to new members once they're through antiraid's captcha. Roles with dangerous permissions can't be used. Run `autorole` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3808,7 +3821,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Pings new members in channels and deletes the ping right away, so they notice those channels."
+      "Pings new members in channels and deletes the ping right away, so they notice those channels. Run `pingonjoin` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3888,7 +3901,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Reminds the server to bump on DISBOARD when the 2 hour cooldown ends, and thanks whoever bumped."
+      "Reminds the server to bump on DISBOARD when the 2 hour cooldown ends, and thanks whoever bumped. Run `bumpreminder` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -3995,7 +4008,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Repeating messages posted every so often."
+      "Repeating messages posted every so often. Run `timer` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4062,7 +4075,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Replies automatically when a message contains a trigger. Flood protection allows one match per member every 5s, one per channel every 2s and five per server every 10s. Excess matches are skipped, including role actions and trigger deletion. Responders pause during attack quiet mode."
+      "Replies automatically when a message contains a trigger. Flood protection allows one match per member every 5s, one per channel every 2s and five per server every 10s. Excess matches are skipped, including role actions and trigger deletion. Responders pause during attack quiet mode. Run `autoresponder` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4210,7 +4223,7 @@
     "dash": "/reactions",
     "perm": "Manage Server",
     "desc": [
-      "Reacts to messages that contain a word, or to every message in a channel."
+      "Reacts to messages that contain a word, or to every message in a channel. Run `reaction` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4305,7 +4318,7 @@
     "dash": "-",
     "perm": "Manage Roles",
     "desc": [
-      "Members react to a message to get a role."
+      "Members react to a message to get a role. Run `reactionrole` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4393,7 +4406,7 @@
     "dash": "-",
     "perm": "Manage Roles",
     "desc": [
-      "Members press a button on a message to get a role."
+      "Members press a button on a message to get a role. Run `buttonrole` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4493,7 +4506,7 @@
     "dash": "-",
     "perm": "Manage Roles",
     "desc": [
-      "Dropdown menus members pick roles from."
+      "Dropdown menus members pick roles from. Run `rolemenu` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4873,7 +4886,7 @@
     "dash": "-",
     "perm": "Manage Roles",
     "desc": [
-      "Rewards members who wear this server's guild tag."
+      "Rewards members who wear this server's guild tag. Run `badge` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -4954,7 +4967,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Rewards visible custom statuses containing a link or keyword, with optional required roles. Does not read bios. Discord privacy settings can hide statuses. Configure everything at flanker.wtf/dashboard, under Community, Vanity rewards. No boost tier or vanity URL is needed. Only roles awarded by this module are removed when eligibility is lost."
+      "Rewards visible custom statuses containing a link or keyword, with optional required roles. Does not read bios. Discord privacy settings can hide statuses. Configure everything at flanker.wtf/dashboard, under Community, Vanity rewards. No boost tier or vanity URL is needed. Only roles awarded by this module are removed when eligibility is lost. Run `vanity` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -5112,7 +5125,7 @@
     "dash": "/moderation/logs",
     "perm": "Manage Server (real)",
     "desc": [
-      "Server logs: deleted and edited messages, joins and leaves, role, channel, invite, emoji and voice changes, and moderation done outside flanker."
+      "Server logs: deleted and edited messages, joins and leaves, role, channel, invite, emoji and voice changes, and moderation done outside flanker. Run `log` on its own for a setup panel, including forum-style logs (one post per event)."
     ],
     "subs": [
       {
@@ -5124,6 +5137,18 @@
           [
             "log",
             "setup"
+          ]
+        ]
+      },
+      {
+        "syntax": "log setup forum",
+        "perm": "Manage Server (real)",
+        "desc": "Uses one private forum with a post per event instead of channels. `log setup channels` switches back.",
+        "ex": "",
+        "slash": [
+          [
+            "log",
+            "setup-forum"
           ]
         ]
       },
@@ -5212,7 +5237,7 @@
     "dash": "/invites",
     "perm": "Manage Server",
     "desc": [
-      "Tracks who invited whom, with fake invite checks and rewards for inviters."
+      "Tracks who invited whom, with fake invite checks and rewards for inviters. Run `invites settings` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -5509,7 +5534,7 @@
     "dash": "-",
     "perm": "-",
     "desc": [
-      "Chat levels: members earn XP for talking and get roles as they level up. Existing configured reward roles set starting levels automatically, using the highest held role without lowering saved XP. Imports do not send level-up messages."
+      "Chat levels: members earn XP for talking and get roles as they level up. Existing configured reward roles set starting levels automatically, using the highest held role without lowering saved XP. Imports do not send level-up messages. Run `levels settings` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -5968,7 +5993,7 @@
     "dash": "/reactions",
     "perm": "Manage Server",
     "desc": [
-      "Reposts messages that collect enough of an emoji to a channel."
+      "Reposts messages that collect enough of an emoji to a channel. Run `starboard` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -6446,7 +6471,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Anonymous confessions posted with /confess."
+      "Anonymous confessions posted with /confess. Run `confessions` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -6767,7 +6792,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Posts profile pictures, gifs or banners in a channel every few minutes."
+      "Posts profile pictures, gifs or banners in a channel every few minutes. Run `autopfp` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -6894,7 +6919,7 @@
     "dash": "-",
     "perm": "Manage Channels",
     "desc": [
-      "Channels whose names show live counts, like member count."
+      "Channels whose names show live counts, like member count. Run `counter` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -6948,7 +6973,7 @@
     "dash": "-",
     "perm": "Manage Server",
     "desc": [
-      "Giveaways with requirements checked when winners are drawn, bonus entries and rerolls."
+      "Giveaways with requirements checked when winners are drawn, bonus entries and rerolls. Run `giveaways` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -7358,10 +7383,10 @@
     ],
     "subs": [
       {
-        "syntax": "embed create (name) (embed code)",
+        "syntax": "embed create (name) [embed code]",
         "perm": "Manage Messages",
-        "desc": "Saves an embed.",
-        "ex": "embed create rules {embed}$v{title: Rules}",
+        "desc": "Without code, opens the builder: the embed appears with buttons to edit its title, description, colour, author, footer, images, fields and link buttons. It updates and saves as you go. With code, saves that.",
+        "ex": "embed create rules",
         "slash": [
           [
             "embed",
@@ -7396,7 +7421,7 @@
       {
         "syntax": "embed edit (message link) (embed code)",
         "perm": "Manage Messages",
-        "desc": "Edits one of flanker's messages.",
+        "desc": "Edits one of flanker's messages. `embed edit (name)` reopens a saved embed in the builder.",
         "ex": "",
         "slash": [
           [
@@ -7456,6 +7481,47 @@
     ],
     "aliases": [
       "embeds"
+    ],
+    "category": "Utility",
+    "slug": "utility"
+  },
+  {
+    "name": "card",
+    "dash": "-",
+    "perm": "Manage Messages",
+    "desc": [
+      "Build a Components V2 card with buttons instead of code. Cards are saved like embeds, so `embed send`, `embed view` and `embed:name` buttons work with them too."
+    ],
+    "subs": [
+      {
+        "syntax": "card create [name]",
+        "perm": "Manage Messages",
+        "desc": "Opens the card builder: the card appears with buttons to edit its title, description, colour, author, footer, images, fields and link buttons. It updates and saves as you go. **Make it an embed** switches the look.",
+        "ex": "card create rules",
+        "slash": [
+          [
+            "server-tools",
+            "card",
+            "create"
+          ]
+        ]
+      },
+      {
+        "syntax": "card edit (name)",
+        "perm": "Manage Messages",
+        "desc": "Reopens a saved card or embed in the builder.",
+        "ex": "card edit rules",
+        "slash": [
+          [
+            "server-tools",
+            "card",
+            "edit"
+          ]
+        ]
+      }
+    ],
+    "aliases": [
+      "cards"
     ],
     "category": "Utility",
     "slug": "utility"
@@ -7849,6 +7915,19 @@
         ]
       },
       {
+        "syntax": "customize namestyle [ggsans/tempo/sakura/jellybean/modern/medieval/pixel/vampyre/monkeybars/mainframe/headbang/journal/reset] [solid/gradient/neon/toon/pop/gummy/prism] [colours]",
+        "perm": "Server owner",
+        "desc": "How flanker's name looks on its profile here. On its own, opens menus for the font, effect and colours. pixel is the 8Bit font. Up to 5 hex colours for gradient, gummy and prism. reset goes back to default.",
+        "ex": "customize namestyle sakura gradient #3B82F6 #EF4444",
+        "slash": [
+          [
+            "settings",
+            "customize",
+            "namestyle"
+          ]
+        ]
+      },
+      {
         "syntax": "customize reset",
         "perm": "Server owner",
         "desc": "Back to normal.",
@@ -8169,14 +8248,14 @@
     "dash": "/liveboards",
     "perm": "Manage Server",
     "desc": [
-      "Live leaderboards: images of the top members by messages and by voice time, posted together in a channel and updated by itself every minute (or every few minutes). Server managers choose the period for each board: daily (resets at midnight UTC), weekly (resets on Monday) or monthly (resets on the 1st). Run one board per period to show all three. Also `liveleaderboard`."
+      "Live leaderboards: the top members by messages and by voice time, posted together in a channel and updated by itself every minute (or every few minutes). Each board is an image (the default), an embed or a Components V2 card; embeds and cards say whatever you write with leaderboard variables like `{user.first.name}` (`liveboard variables`). Server managers choose the period for each board: daily (resets at midnight UTC), weekly (resets on Monday) or monthly (resets on the 1st). Run one board per period to show all three. Also `liveleaderboard`. Run `liveboard` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
-        "syntax": "liveboard add (#channel) [daily/weekly/monthly] [both/messages/voice] [1m/5m/10m/15m/30m/60m] [top N]",
+        "syntax": "liveboard add (#channel) [daily/weekly/monthly] [both/messages/voice] [image/embed/card] [1m/5m/10m/15m/30m/60m] [top N]",
         "perm": "Manage Server",
-        "desc": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly. Defaults: weekly, both messages and voice, every minute, top 10.",
-        "ex": "liveboard add #leaderboard daily 1m top 10",
+        "desc": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly, and an image, embed or card. Defaults: weekly, both messages and voice, image, every minute, top 10.",
+        "ex": "liveboard add #leaderboard daily embed 1m top 10",
         "slash": [
           [
             "stats",
@@ -8186,15 +8265,54 @@
         ]
       },
       {
-        "syntax": "liveboard edit (number) [daily/weekly/monthly] [both/messages/voice] [1m-60m] [top N] [#channel]",
+        "syntax": "liveboard edit (number) [daily/weekly/monthly] [both/messages/voice] [image/embed/card] [1m-60m] [top N] [#channel]",
         "perm": "Manage Server",
-        "desc": "Changes a board in place, including its period (daily, weekly or monthly). A new channel moves it there.",
+        "desc": "Changes a board in place, including its period (daily, weekly or monthly) and look. A new channel moves it there.",
         "ex": "liveboard edit 1 monthly",
         "slash": [
           [
             "stats",
             "liveboard",
             "edit"
+          ]
+        ]
+      },
+      {
+        "syntax": "liveboard style (number) (image/embed/card)",
+        "perm": "Manage Server",
+        "desc": "Switches a board between an image, an embed and a Components V2 card. The old post is replaced.",
+        "ex": "liveboard style 1 card",
+        "slash": [
+          [
+            "stats",
+            "liveboard",
+            "style"
+          ]
+        ]
+      },
+      {
+        "syntax": "liveboard message (number) [message]",
+        "perm": "Manage Server",
+        "desc": "Sets what an embed or card board says: plain text, an embed script or a card script with leaderboard variables. `reset` goes back to the default; no message shows the current one. An image board becomes an embed.",
+        "ex": "liveboard message 1 {embed}$v{title: Top chatters}$v{description: 🥇 {user.first.mention} · {proper(user.first.message_count)}}",
+        "slash": [
+          [
+            "stats",
+            "liveboard",
+            "message"
+          ]
+        ]
+      },
+      {
+        "syntax": "liveboard variables",
+        "perm": "Manage Server",
+        "desc": "Lists the leaderboard variables: `{user.first.name}` to `{user.tenth.name}`, counts, `{next_reset}` and more.",
+        "ex": "",
+        "slash": [
+          [
+            "stats",
+            "liveboard",
+            "variables"
           ]
         ]
       },
@@ -9057,7 +9175,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Posts new videos from YouTube channels."
+      "Posts new videos from YouTube channels. Run `youtube` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9124,7 +9242,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Announces when Twitch streamers go live."
+      "Announces when Twitch streamers go live. Run `twitch` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9189,7 +9307,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Announces when Kick streamers go live."
+      "Announces when Kick streamers go live. Run `kickstream` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9256,7 +9374,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Posts new posts from subreddits."
+      "Posts new posts from subreddits. Run `reddit` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9323,7 +9441,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Posts new SoundCloud uploads."
+      "Posts new SoundCloud uploads. Run `soundcloud` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9390,7 +9508,7 @@
     "dash": "/notifications",
     "perm": "Manage Server",
     "desc": [
-      "Posts new Pinterest pins."
+      "Posts new Pinterest pins. Run `pinterest` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -9886,7 +10004,7 @@
     "dash": "/voicemaster",
     "perm": "-",
     "desc": [
-      "Join to create voice rooms that members own and control."
+      "Join to create voice rooms that members own and control. Run `voicemaster` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -10564,7 +10682,7 @@
     "dash": "/tickets",
     "perm": "Manage Server",
     "desc": [
-      "Private support channels members open from a panel."
+      "Private support channels members open from a panel. Run `ticket panel` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -10620,7 +10738,7 @@
       {
         "syntax": "ticket panel set (panel) (channel/message/display/max/log/inside) (value)",
         "perm": "Manage Server",
-        "desc": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+        "desc": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
         "ex": "",
         "slash": [
           [
@@ -11062,7 +11180,7 @@
     "dash": "/applications",
     "perm": "Manage Server",
     "desc": [
-      "Applications: forms members fill in to apply for staff and other roles, reviewed by staff with Accept and Deny buttons."
+      "Applications: forms members fill in to apply for staff and other roles, reviewed by staff with Accept and Deny buttons. Run `application settings` for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -13214,7 +13332,7 @@
     "dash": "/moderation/channels",
     "perm": "Manage Messages",
     "desc": [
-      "A message that stays at the bottom of a channel."
+      "A message that stays at the bottom of a channel. Run `sticky` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -13268,7 +13386,7 @@
     "dash": "/moderation/channels",
     "perm": "Manage Channels",
     "desc": [
-      "Publishes every message in an announcement channel, so following servers get it."
+      "Publishes every message in an announcement channel, so following servers get it. Run `autopublish` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {
@@ -13322,7 +13440,7 @@
     "dash": "/moderation/channels",
     "perm": "Manage Channels",
     "desc": [
-      "Channels where only images and videos are allowed. Text-only messages are deleted."
+      "Channels where only images and videos are allowed. Text-only messages are deleted. Run `imageonly` on its own for a setup panel with menus and buttons."
     ],
     "subs": [
       {

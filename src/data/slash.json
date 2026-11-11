@@ -5271,7 +5271,22 @@
     "command": "setup",
     "syntax": "setup",
     "path": [
-      "setup"
+      "setup",
+      "show"
+    ],
+    "description": "Opens the setup hub with every module and its status.",
+    "portable": false,
+    "options": [],
+    "details": "Opens the setup hub with every module and its status.",
+    "aliases": [],
+    "required_groups": []
+  },
+  {
+    "command": "setup",
+    "syntax": "setup jail",
+    "path": [
+      "setup",
+      "jail"
     ],
     "description": "Creates everything the jail needs and hides other channels from jailed members.",
     "portable": false,
@@ -9748,7 +9763,7 @@
       "welcome",
       "add"
     ],
-    "description": "Sets the welcome message for a channel.",
+    "description": "Sets the welcome message for a channel. Without a message it opens a setup panel with menu",
     "portable": false,
     "options": [
       {
@@ -9774,7 +9789,7 @@
         "max_value": 60
       }
     ],
-    "details": "Sets the welcome message for a channel.",
+    "details": "Sets the welcome message for a channel. Without a message it opens a setup panel with menus and buttons; without a channel it uses this one.",
     "aliases": [
       "welc",
       "join"
@@ -9812,7 +9827,7 @@
       "welcome",
       "view"
     ],
-    "description": "Shows the message's script.",
+    "description": "Opens the setup panel for that channel, with a link to edit the message in Studio.",
     "portable": false,
     "options": [
       {
@@ -9822,7 +9837,7 @@
         "required": true
       }
     ],
-    "details": "Shows the message's script.",
+    "details": "Opens the setup panel for that channel, with a link to edit the message in Studio.",
     "aliases": [
       "welc",
       "join"
@@ -9878,7 +9893,7 @@
       "leave",
       "add"
     ],
-    "description": "Sets the leave message for a channel.",
+    "description": "Sets the leave message for a channel. Without a message it opens a setup panel.",
     "portable": false,
     "options": [
       {
@@ -9904,7 +9919,7 @@
         "max_value": 60
       }
     ],
-    "details": "Sets the leave message for a channel.",
+    "details": "Sets the leave message for a channel. Without a message it opens a setup panel.",
     "aliases": [
       "goodbye",
       "bye"
@@ -9944,7 +9959,7 @@
       "leave",
       "view"
     ],
-    "description": "Shows the message's script.",
+    "description": "Opens the setup panel for that channel.",
     "portable": false,
     "options": [
       {
@@ -9954,7 +9969,7 @@
         "required": true
       }
     ],
-    "details": "Shows the message's script.",
+    "details": "Opens the setup panel for that channel.",
     "aliases": [
       "goodbye",
       "bye"
@@ -9994,7 +10009,7 @@
       "boosts",
       "add"
     ],
-    "description": "Sets the boost message for a channel.",
+    "description": "Sets the boost message for a channel. Without a message it opens a setup panel.",
     "portable": false,
     "options": [
       {
@@ -10020,7 +10035,7 @@
         "max_value": 60
       }
     ],
-    "details": "Sets the boost message for a channel.",
+    "details": "Sets the boost message for a channel. Without a message it opens a setup panel.",
     "aliases": [
       "boost",
       "boostmessage"
@@ -10060,7 +10075,7 @@
       "boosts",
       "view"
     ],
-    "description": "Shows the message's script.",
+    "description": "Opens the setup panel for that channel.",
     "portable": false,
     "options": [
       {
@@ -10070,7 +10085,7 @@
         "required": true
       }
     ],
-    "details": "Shows the message's script.",
+    "details": "Opens the setup panel for that channel.",
     "aliases": [
       "boost",
       "boostmessage"
@@ -14539,6 +14554,23 @@
   },
   {
     "command": "log",
+    "syntax": "log setup forum",
+    "path": [
+      "log",
+      "setup-forum"
+    ],
+    "description": "Uses one private forum with a post per event instead of channels. log setup channels switc",
+    "portable": false,
+    "options": [],
+    "details": "Uses one private forum with a post per event instead of channels. `log setup channels` switches back.",
+    "aliases": [
+      "logs",
+      "logging"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "log",
     "syntax": "log color list (channel)",
     "path": [
       "log",
@@ -17387,6 +17419,132 @@
   },
   {
     "command": "customize",
+    "syntax": "customize namestyle [ggsans/tempo/sakura/jellybean/modern/medieval/pixel/vampyre/monkeybars/mainframe/headbang/journal/reset] [solid/gradient/neon/toon/pop/gummy/prism] [colours]",
+    "path": [
+      "settings",
+      "customize",
+      "namestyle"
+    ],
+    "description": "How flanker's name looks on its profile here. On its own, opens menus for the font, effect",
+    "portable": false,
+    "options": [
+      {
+        "type": 3,
+        "name": "font",
+        "description": "ggsans/tempo/sakura/jellybean/modern/medieval/pixel/vampyre/monkeybars/mainframe/headbang/",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "ggsans",
+            "value": "ggsans"
+          },
+          {
+            "name": "tempo",
+            "value": "tempo"
+          },
+          {
+            "name": "sakura",
+            "value": "sakura"
+          },
+          {
+            "name": "jellybean",
+            "value": "jellybean"
+          },
+          {
+            "name": "modern",
+            "value": "modern"
+          },
+          {
+            "name": "medieval",
+            "value": "medieval"
+          },
+          {
+            "name": "pixel",
+            "value": "pixel"
+          },
+          {
+            "name": "vampyre",
+            "value": "vampyre"
+          },
+          {
+            "name": "monkeybars",
+            "value": "monkeybars"
+          },
+          {
+            "name": "mainframe",
+            "value": "mainframe"
+          },
+          {
+            "name": "headbang",
+            "value": "headbang"
+          },
+          {
+            "name": "journal",
+            "value": "journal"
+          },
+          {
+            "name": "reset",
+            "value": "reset"
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "name": "effect",
+        "description": "solid/gradient/neon/toon/pop/gummy/prism",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "solid",
+            "value": "solid"
+          },
+          {
+            "name": "gradient",
+            "value": "gradient"
+          },
+          {
+            "name": "neon",
+            "value": "neon"
+          },
+          {
+            "name": "toon",
+            "value": "toon"
+          },
+          {
+            "name": "pop",
+            "value": "pop"
+          },
+          {
+            "name": "gummy",
+            "value": "gummy"
+          },
+          {
+            "name": "prism",
+            "value": "prism"
+          }
+        ]
+      },
+      {
+        "type": 3,
+        "name": "colours",
+        "description": "colours",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1
+      }
+    ],
+    "details": "How flanker's name looks on its profile here. On its own, opens menus for the font, effect and colours. pixel is the 8Bit font. Up to 5 hex colours for gradient, gummy and prism. reset goes back to default.",
+    "aliases": [
+      "customise"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "customize",
     "syntax": "customize reset",
     "path": [
       "settings",
@@ -19553,6 +19711,58 @@
     "details": "Sends a tag.",
     "aliases": [
       "tag"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "card",
+    "syntax": "card create [name]",
+    "path": [
+      "server-tools",
+      "card",
+      "create"
+    ],
+    "description": "Opens the card builder: the card appears with buttons to edit its title, description, colo",
+    "portable": false,
+    "options": [
+      {
+        "type": 3,
+        "name": "name",
+        "description": "name",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1
+      }
+    ],
+    "details": "Opens the card builder: the card appears with buttons to edit its title, description, colour, author, footer, images, fields and link buttons. It updates and saves as you go. **Make it an embed** switches the look.",
+    "aliases": [
+      "cards"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "card",
+    "syntax": "card edit (name)",
+    "path": [
+      "server-tools",
+      "card",
+      "edit"
+    ],
+    "description": "Reopens a saved card or embed in the builder.",
+    "portable": false,
+    "options": [
+      {
+        "type": 3,
+        "name": "name",
+        "description": "name",
+        "required": true,
+        "max_length": 4000,
+        "min_length": 1
+      }
+    ],
+    "details": "Reopens a saved card or embed in the builder.",
+    "aliases": [
+      "cards"
     ],
     "required_groups": []
   },
@@ -23635,13 +23845,13 @@
   },
   {
     "command": "liveboard",
-    "syntax": "liveboard add (#channel) [daily/weekly/monthly] [both/messages/voice] [1m/5m/10m/15m/30m/60m] [top N]",
+    "syntax": "liveboard add (#channel) [daily/weekly/monthly] [both/messages/voice] [image/embed/card] [1m/5m/10m/15m/30m/60m] [top N]",
     "path": [
       "stats",
       "liveboard",
       "add"
     ],
-    "description": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly. Defaults: we",
+    "description": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly, and an image",
     "portable": false,
     "options": [
       {
@@ -23696,6 +23906,28 @@
       },
       {
         "type": 3,
+        "name": "image-embed-card",
+        "description": "image/embed/card",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "image",
+            "value": "image"
+          },
+          {
+            "name": "embed",
+            "value": "embed"
+          },
+          {
+            "name": "card",
+            "value": "card"
+          }
+        ]
+      },
+      {
+        "type": 3,
         "name": "1m-5m-10m-15m-30m-60m",
         "description": "1m/5m/10m/15m/30m/60m",
         "required": false,
@@ -23709,9 +23941,15 @@
         "required": false,
         "min_value": 0,
         "max_value": 9007199254740991
+      },
+      {
+        "type": 11,
+        "name": "file",
+        "description": "file",
+        "required": false
       }
     ],
-    "details": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly. Defaults: weekly, both messages and voice, every minute, top 10.",
+    "details": "Posts a live leaderboard (up to 5 per server). Pick daily, weekly or monthly, and an image, embed or card. Defaults: weekly, both messages and voice, image, every minute, top 10.",
     "aliases": [
       "liveleaderboard",
       "livelb"
@@ -23720,13 +23958,13 @@
   },
   {
     "command": "liveboard",
-    "syntax": "liveboard edit (number) [daily/weekly/monthly] [both/messages/voice] [1m-60m] [top N] [#channel]",
+    "syntax": "liveboard edit (number) [daily/weekly/monthly] [both/messages/voice] [image/embed/card] [1m-60m] [top N] [#channel]",
     "path": [
       "stats",
       "liveboard",
       "edit"
     ],
-    "description": "Changes a board in place, including its period (daily, weekly or monthly). A new channel m",
+    "description": "Changes a board in place, including its period (daily, weekly or monthly) and look. A new ",
     "portable": false,
     "options": [
       {
@@ -23783,6 +24021,28 @@
       },
       {
         "type": 3,
+        "name": "image-embed-card",
+        "description": "image/embed/card",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "image",
+            "value": "image"
+          },
+          {
+            "name": "embed",
+            "value": "embed"
+          },
+          {
+            "name": "card",
+            "value": "card"
+          }
+        ]
+      },
+      {
+        "type": 3,
         "name": "duration",
         "description": "1m-60m",
         "required": false,
@@ -23802,9 +24062,123 @@
         "name": "channel",
         "description": "#channel",
         "required": false
+      },
+      {
+        "type": 11,
+        "name": "file",
+        "description": "file",
+        "required": false
       }
     ],
-    "details": "Changes a board in place, including its period (daily, weekly or monthly). A new channel moves it there.",
+    "details": "Changes a board in place, including its period (daily, weekly or monthly) and look. A new channel moves it there.",
+    "aliases": [
+      "liveleaderboard",
+      "livelb"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "liveboard",
+    "syntax": "liveboard style (number) (image/embed/card)",
+    "path": [
+      "stats",
+      "liveboard",
+      "style"
+    ],
+    "description": "Switches a board between an image, an embed and a Components V2 card. The old post is repl",
+    "portable": false,
+    "options": [
+      {
+        "type": 4,
+        "name": "number",
+        "description": "number",
+        "required": true,
+        "min_value": 0,
+        "max_value": 9007199254740991
+      },
+      {
+        "type": 3,
+        "name": "image-embed-card",
+        "description": "image/embed/card",
+        "required": true,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "image",
+            "value": "image"
+          },
+          {
+            "name": "embed",
+            "value": "embed"
+          },
+          {
+            "name": "card",
+            "value": "card"
+          }
+        ]
+      },
+      {
+        "type": 11,
+        "name": "file",
+        "description": "file",
+        "required": false
+      }
+    ],
+    "details": "Switches a board between an image, an embed and a Components V2 card. The old post is replaced.",
+    "aliases": [
+      "liveleaderboard",
+      "livelb"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "liveboard",
+    "syntax": "liveboard message (number) [message]",
+    "path": [
+      "stats",
+      "liveboard",
+      "message"
+    ],
+    "description": "Sets what an embed or card board says: plain text, an embed script or a card script with l",
+    "portable": false,
+    "options": [
+      {
+        "type": 4,
+        "name": "number",
+        "description": "number",
+        "required": true,
+        "min_value": 0,
+        "max_value": 9007199254740991
+      },
+      {
+        "type": 3,
+        "name": "message",
+        "description": "message",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1
+      }
+    ],
+    "details": "Sets what an embed or card board says: plain text, an embed script or a card script with leaderboard variables. `reset` goes back to the default; no message shows the current one. An image board becomes an embed.",
+    "aliases": [
+      "liveleaderboard",
+      "livelb"
+    ],
+    "required_groups": []
+  },
+  {
+    "command": "liveboard",
+    "syntax": "liveboard variables",
+    "path": [
+      "stats",
+      "liveboard",
+      "variables"
+    ],
+    "description": "Lists the leaderboard variables: {user.first.name} to {user.tenth.name}, counts, {next_res",
+    "portable": false,
+    "options": [],
+    "details": "Lists the leaderboard variables: `{user.first.name}` to `{user.tenth.name}`, counts, `{next_reset}` and more.",
     "aliases": [
       "liveleaderboard",
       "livelb"
@@ -28610,7 +28984,7 @@
       "panels",
       "set-channel"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28634,7 +29008,7 @@
         "required": false
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -28656,7 +29030,7 @@
       "panels",
       "set-message"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28682,7 +29056,7 @@
         "max_length": 4000
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -28704,7 +29078,7 @@
       "panels",
       "set-display"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28734,7 +29108,7 @@
         ]
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -28748,7 +29122,7 @@
       "panels",
       "set-max"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28768,7 +29142,7 @@
         "max_value": 4294967295
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -28782,7 +29156,7 @@
       "panels",
       "set-log"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28806,7 +29180,7 @@
         "required": false
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -28828,7 +29202,7 @@
       "panels",
       "set-inside"
     ],
-    "description": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it",
+    "description": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. tic",
     "portable": false,
     "options": [
       {
@@ -28846,7 +29220,7 @@
         "required": true
       }
     ],
-    "details": "Changes a panel. inside on puts the open buttons or menu inside a card instead of under it.",
+    "details": "Changes a panel. With only a panel name it opens a setup panel with menus and buttons. `ticket panel set (panel) #channel (message)` sets both at once. inside on puts the open buttons or menu inside a card instead of under it.",
     "aliases": [
       "tickets"
     ],
@@ -33894,12 +34268,12 @@
   },
   {
     "command": "embed",
-    "syntax": "embed create (name) (embed code)",
+    "syntax": "embed create (name) [embed code]",
     "path": [
       "embed",
       "create"
     ],
-    "description": "Saves an embed.",
+    "description": "Without code, opens the builder: the embed appears with buttons to edit its title, descrip",
     "portable": false,
     "options": [
       {
@@ -33914,7 +34288,7 @@
         "type": 3,
         "name": "embed-code",
         "description": "embed code",
-        "required": true,
+        "required": false,
         "max_length": 4000,
         "min_length": 1
       },
@@ -33925,7 +34299,7 @@
         "required": false
       }
     ],
-    "details": "Saves an embed.",
+    "details": "Without code, opens the builder: the embed appears with buttons to edit its title, description, colour, author, footer, images, fields and link buttons. It updates and saves as you go. With code, saves that.",
     "aliases": [
       "embeds"
     ],
@@ -34006,7 +34380,7 @@
       "embed",
       "edit"
     ],
-    "description": "Edits one of flanker's messages.",
+    "description": "Edits one of flanker's messages. embed edit (name) reopens a saved embed in the builder.",
     "portable": false,
     "options": [
       {
@@ -34032,7 +34406,7 @@
         "required": false
       }
     ],
-    "details": "Edits one of flanker's messages.",
+    "details": "Edits one of flanker's messages. `embed edit (name)` reopens a saved embed in the builder.",
     "aliases": [
       "embeds"
     ],

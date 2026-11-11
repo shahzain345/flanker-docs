@@ -1003,7 +1003,7 @@
       {
         "syntax": "antiraid flood (on/off) [--messages N] [--window 3s] [--accounts N] [--repeats N] [--repeat-window 10s] [--repeat-chars N] [--do captcha/jail]",
         "perm": "Manage Server (real)",
-        "desc": "Detects repeated text, mention floods and bot-like bursts. Requires two accounts by default; choose one for single-sender protection.",
+        "desc": "Detects repeated text, mention floods and bot-like bursts. Requires two accounts by default. With one, a single sender is restricted with the flood action (lockdown becomes a 30 minute timeout) and raid mode stays off; raid mode needs two or more accounts. Three chopped-up or hidden-invite messages from one account in five seconds are handled the same way.",
         "ex": "antiraid flood on --messages 6 --window 3s --accounts 2 --repeats 3 --repeat-window 10s --repeat-chars 400",
         "slash": [
           [

@@ -3425,7 +3425,7 @@
         ]
       }
     ],
-    "details": "Detects repeated text, mention floods and bot-like bursts. Requires two accounts by default; choose one for single-sender protection.",
+    "details": "Detects repeated text, mention floods and bot-like bursts. Requires two accounts by default. With one, a single sender is restricted with the flood action (lockdown becomes a 30 minute timeout) and raid mode stays off; raid mode needs two or more accounts. Three chopped-up or hidden-invite messages from one account in five seconds are handled the same way.",
     "aliases": [
       "ar",
       "antiraids"

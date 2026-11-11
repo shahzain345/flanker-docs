@@ -41,6 +41,10 @@ A busy event can generate legitimate bursts. Review normal join volume before tu
 
 Chat flood rules consider messages, participating accounts and repeated text. Media, repeated-link and Discord AutoMod correlation have their own limits. The AutoMod correlation rule needs an enabled Discord mention-spam rule; one blocked attempt alone does not qualify.
 
+Raid mode only starts when **two or more accounts** flood together. A single account that floods is handled on its own: its messages are deleted and it gets the flood action (a captcha or jail). When the flood action is server lockdown, a single account is timed out for 30 minutes instead, and the server stays open.
+
+Text chopped into short lines to slip past filters, like an invite split across lines, counts as risky. **Three risky messages from one account within five seconds** deletes them and restricts that account the same way. Chopped-up invites are also caught by the invite filter on their own.
+
 See the [full antiraid options](/commands/security/#antiraid) for every rule, supported response and limit.
 
 ## 3. Protect tickets and temporary voice channels

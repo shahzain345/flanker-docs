@@ -17,7 +17,7 @@ Every leaderboard has one of three looks:
 
 ## Set it up in Discord
 
-Run `,liveboard` (Manage Server) to open the leaderboard panel. It shows
+Run `@flanker liveboard` (Manage Server) to open the leaderboard panel. It shows
 every leaderboard at a glance: **Messages** and **Voice time**, each daily,
 weekly and monthly, with an **Edit** button (or **Set up** when it's not set).
 Press it, then change the leaderboard with menus:
@@ -33,24 +33,24 @@ Press it, then change the leaderboard with menus:
 - **Stop posting**: removes the leaderboard and deletes its message, after
   you confirm.
 
-Running `,liveboard message` without a message also opens the panel.
+Running `/stats liveboard message` without a message also opens the panel.
 
 ## Commands
 
 ```
-,liveboard add #leaderboard daily embed
-,liveboard style 1 card
-,liveboard message 1 {embed}$v{title: Top chatters}$v{description: {user.first.emote} {user.first.mention} · {proper(user.first.message_count)}
+/stats liveboard add #leaderboard daily embed
+/stats liveboard style 1 card
+/stats liveboard message 1 {embed}$v{title: Top chatters}$v{description: {user.first.emote} {user.first.mention} · {proper(user.first.message_count)}
 {user.second.emote} {user.second.mention} · {proper(user.second.message_count)}
 {user.third.emote} {user.third.mention} · {proper(user.third.message_count)}
 
 Resets <t:{next_reset}:R>}
-,liveboard message 1 reset
-,liveboard variables
-,liveboard edit 1 weekly 5m top 15
+/stats liveboard message 1 reset
+/stats liveboard variables
+/stats liveboard edit 1 weekly 5m top 15
 ```
 
-The number is the leaderboard's position in `,liveboard list`. The same
+The number is the leaderboard's position in `/stats liveboard list`. The same
 commands are under `/stats liveboard`, including `/stats liveboard variables`.
 
 ## Variables

@@ -12,7 +12,7 @@ A honeypot is a visible, clearly marked channel that members should leave alone.
 Use an account with **real Manage Server**. Open **Honeypot** in the [dashboard](https://flanker.wtf/servers) and select **Create #honeypot**, or run:
 
 ```text
-,honeypot setup
+/honeypot setup
 ```
 
 Flanker creates the channel and posts a warning notice. Keep that warning clear. The trap needs to be visible to the members you intend it to catch; hiding it from everyone defeats that purpose.
@@ -24,8 +24,8 @@ The default response is **softban**: kick the member and delete one day of messa
 <SettingsPreview title="Example honeypot configuration" rows={[{label:'Trap channel',value:'#honeypot',hint:'Created by setup. Keep the warning visible.'},{label:'Remove them',value:'Softban',hint:'The default removes a day of messages without a lasting ban.'},{label:'Alerts',value:'#security-log'},{label:'Warning notice',value:'Do not send messages here'}]} />
 
 ```text
-,honeypot punishment softban
-,honeypot alerts #security-log
+/honeypot punishment softban
+/honeypot alerts #security-log
 ```
 
 These commands change settings. Select a response suitable for your server, and ensure Flanker has the corresponding moderation permissions and role position.
@@ -35,7 +35,7 @@ These commands change settings. Select a response suitable for your server, and 
 The dashboard’s **Warning notice** uses the shared message builder. Edit its text or card, inspect the preview and save the change. The caught count updates automatically. Reset the message if you want Flanker’s default warning again:
 
 ```text
-,honeypot message reset
+/honeypot message reset
 ```
 
 A clear warning is part of the setup. Do not disguise the channel as normal chat.
@@ -55,6 +55,6 @@ A clear warning is part of the setup. Do not disguise the channel as normal chat
 
 **No catch from a bot or webhook:** those senders are intentionally ignored.
 
-**Disable the feature:** `,honeypot disable` removes the trap. Review its consequences before running it.
+**Disable the feature:** `/honeypot disable` removes the trap. Review its consequences before running it.
 
 See [honeypot commands](/commands/security/#honeypot) for the message and alert options.

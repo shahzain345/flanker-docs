@@ -15,8 +15,8 @@ go live or publish something new.
 - **Pinterest** pins
 - **Fortnite** data
 
-Set each up with its command (`,twitch`, `,youtube`, `,kickstream`, `,reddit`,
-`,soundcloud`, `,pinterest`, `,fortnite`). See the
+Set each up with its command (`@flanker twitch`, `@flanker youtube`, `@flanker kickstream`, `@flanker reddit`,
+`@flanker soundcloud`, `@flanker pinterest`, `/integrations fortnite run`). See the
 [Integrations commands](/commands/integrations/).
 
 ## On the dashboard

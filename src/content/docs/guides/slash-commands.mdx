@@ -1,11 +1,11 @@
 ---
 title: Typed slash commands
-description: Find every slash command, its prefix equivalent, typed fields and installation context.
+description: Find every slash command, its mention form, typed fields and installation context.
 tableOfContents: false
 ---
 import SlashReference from '../../../components/SlashReference.astro';
 
-Choose a command in Discord’s slash menu, then fill in its named fields. Member, role, channel and attachment fields use Discord’s pickers. Numbers, choices and yes/no settings have their own controls. You do not need to paste a prefix command into a text field.
+Choose a command in Discord’s slash menu, then fill in its named fields. Member, role, channel and attachment fields use Discord’s pickers. Numbers, choices and yes/no settings have their own controls. You do not need to type the whole command into a text field.
 
 Commands are grouped by feature, with no numbered overflow menus. For example:
 
@@ -21,15 +21,15 @@ Commands are grouped by feature, with no numbered overflow menus. For example:
 | Family pets | `/family pets list` |
 | Chess, including My Apps | `/games chess` |
 
-Every public prefix command has a typed slash equivalent. Open a command in the [command reference](/commands/) to see its prefix syntax, mention syntax and links to the matching slash actions. Prefix aliases are also searchable below. For mention commands, mention Flanker and follow it with the same command and arguments you would use after your prefix.
+Every public command has a typed slash command. Prefix commands were retired on 12 November 2026. Open a command in the [command reference](/commands/) to see its slash actions and its mention form. Command aliases are also searchable below. To use a mention command, mention Flanker and follow it with the command and its arguments.
 
-Prefix reminders and command help use the current slash paths. For example, `,tr en bonjour` maps to `/server-tools translate text language:en text:bonjour`, and its mention version is `@Flanker translate en bonjour`. The `tr` alias is searchable below. Older `/utility` menus have been replaced by feature groups such as `/server-tools`.
+Command help and replies use the current slash paths. For example, `/server-tools translate text language:en text:bonjour` translates text, and its mention version is `@Flanker translate en bonjour`. The `tr` alias is searchable below. Older `/utility` menus have been replaced by feature groups such as `/server-tools`.
 
-To translate a specific message with slash commands, copy its text into `/server-tools translate text`. Discord does not pass reply targets to slash commands. Prefix and mention commands can translate a message you reply to; replying with just `,tr` defaults to English.
+To translate a specific message with slash commands, copy its text into `/server-tools translate text`. Discord does not pass reply targets to slash commands. Mention commands can translate a message you reply to; replying with just `@Flanker tr` defaults to English.
 
 ### Permissions and context
 
-Slash and mention commands use the same feature handlers and permission checks as prefix commands. A slash command does not grant moderation access, bypass a disabled feature or skip an antinuke trust check. Discord can also restrict application-command access by server, role, channel or installation type.
+Slash and mention commands use the same feature handlers and permission checks. A slash command does not grant moderation access, bypass a disabled feature or skip an antinuke trust check. Discord can also restrict application-command access by server, role, channel or installation type.
 
 **Profile installation only** filters to commands available through My Apps. Their availability still depends on Discord and the channel’s external-app settings. Account-linking and participant checks apply. The additional server-only `/confess` action opens a form.
 
@@ -43,13 +43,13 @@ Polls offer up to 10 typed answers and choose offers up to 25 typed choices. Lar
 
 ### Find a command
 
-Search by slash path, prefix name, alias or field name. Links from the command reference open the matching action and show its fields.
+Search by slash path, command name, alias or field name. Links from the command reference open the matching action and show its fields.
 
 <SlashReference />
 
 ## Limit a command to staff roles
 
-Use `/commands rolecommands add` with the **role** field and a command name. For example, select your Moderators role and enter `ban` in **command-command**. The prefix equivalent is `,rc add @Moderators ban`; the mention equivalent is `@flanker rc add @Moderators ban`.
+Use `/commands rolecommands add` with the **role** field and a command name. For example, select your Moderators role and enter `ban` in **command-command**. The mention equivalent is `@flanker rc add @Moderators ban`.
 
 For a command with RC role rules:
 
@@ -58,6 +58,6 @@ For a command with RC role rules:
 - Antinuke, protected members and roles, target hierarchy, channel visibility and Flanker's own permissions still apply. RC cannot grant security access or bypass an explicit owner requirement.
 - Only the server owner can grant role-management commands through RC.
 
-Rules cover the command root, its aliases and subcommands in that server. Use `/commands rolecommands list` or `,rc list` to review them. Removing the last role rule restores normal command access. Recovery commands such as `rc`, `help` and `access` stay available.
+Rules cover the command root, its aliases and subcommands in that server. Use `/commands rolecommands list` to review them. Removing the last role rule restores normal command access. Recovery commands such as `rc`, `help` and `access` stay available.
 
 A **member** target has a different purpose: it blocks that member. It does not add them to the role allowlist. Existing member blocks and separate command/module switches still apply.

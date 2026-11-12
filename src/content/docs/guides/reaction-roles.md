@@ -11,7 +11,7 @@ responses, and highlight popular messages on a starboard.
 Let members react to a message (or click a button) to get a role, and remove
 the reaction to lose it.
 
-- Set them up with `,reaction` (see the [reaction commands](/commands/logging-invites-levels/)
+- Set them up with `@flanker reaction` (see the [reaction commands](/commands/logging-invites-levels/)
   or the relevant reference page).
 - You can also build button-based role pickers with the
   [card scripting](/resources/scripting/) role buttons (`role:`, `give:`, `take:`).
@@ -25,7 +25,7 @@ Make flanker react to messages that match a word or phrase automatically.
 A starboard reposts messages that get enough of a chosen reaction (for example
 a star) into a highlights channel.
 
-- Configure the emoji and the threshold with `,starboard`.
+- Configure the emoji and the threshold with `/starboard run`.
 - Choose whether authors can star their own messages.
 
 ## On the dashboard

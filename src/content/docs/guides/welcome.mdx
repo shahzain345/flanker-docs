@@ -36,9 +36,9 @@ Flanker needs View Channel and Send Messages in the destination. Images and embe
 ### Command alternative
 
 ```text
-,welcome add #welcome Welcome to {guild.name}, {user.mention}!
-,welcome test #welcome
-,welcome list
+/welcome add #welcome Welcome to {guild.name}, {user.mention}!
+/welcome test #welcome
+/welcome list
 ```
 
 Replace the example channel with your own. The test sends a real message with you as the new member. It is separate from the dashboard’s local preview.
@@ -84,9 +84,9 @@ An incomplete script can block visual conversion. Read the explanation and use a
 
 ## 6. Verify delivery
 
-- Confirm the intended channel is configured in `,welcome list`.
+- Confirm the intended channel is configured in `/welcome list`.
 - Save changes before testing. A preview is not a saved configuration.
-- Use **Send a test** or `,welcome test #welcome` and inspect the real message.
+- Use **Send a test** or `/welcome test #welcome` and inspect the real message.
 - Confirm variables are filled and links lead to channels a new member can access.
 - If you use multiple welcome channels, check each channel independently.
 
@@ -106,6 +106,6 @@ An incomplete script can block visual conversion. Read the explanation and use a
 
 **A test is correct but real joins differ:** inspect the selected message type, channel, saved state and variables that depend on an actual join. A test uses the selected test member rather than a new account.
 
-**Remove a welcome:** use the channel’s remove action or `,welcome remove #welcome`. This removes the configuration; it does not delete old messages already sent.
+**Remove a welcome:** use the channel’s remove action or `/welcome remove #welcome`. This removes the configuration; it does not delete old messages already sent.
 
 See [all welcome and message commands](/commands/welcome-and-messages/) and [message scripting](/resources/scripting/).

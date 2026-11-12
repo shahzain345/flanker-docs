@@ -8,12 +8,12 @@ searchable case history.
 
 ## Core actions
 
-- `,ban`, `,softban`, `,tempban`, `,hardban`, `,unban`
-- `,kick`
-- `,timeout` and `,untimeout`
-- `,jail` and `,unjail` (role-based isolation that survives rejoins)
-- `,warn`, `,warnings`, `,clearwarns`
-- `,purge` with filters: member, bots, humans, links, images, embeds, mentions,
+- `/ban`, `/moderation softban`, `/moderation tempban`, `/moderation hardban`, `/unban`
+- `/kick`
+- `/timeout` and `/untimeout`
+- `/jail` and `/unjail` (role-based isolation that survives rejoins)
+- `/warn`, `/warnings`, `/cases clearwarns`
+- `/purge messages` with filters: member, bots, humans, links, images, embeds, mentions,
   or `contains <text>` (1 to 1000 messages)
 
 See the full [Moderation commands](/commands/moderation/) for syntax, limits and
@@ -21,13 +21,13 @@ examples.
 
 ## Channel control
 
-- `,lock` and `,unlock` a channel
-- `,slowmode` to rate-limit a channel
+- `/lock` and `/unlock` a channel
+- `/slowmode` to rate-limit a channel
 
 ## Mutes
 
 flanker supports several mute styles depending on your setup, including
-image mutes and reaction mutes. See `,help imute` and `,help rmute`.
+image mutes and reaction mutes. See `/help module imute` and `/help module rmute`.
 
 ## Case history
 
@@ -35,7 +35,7 @@ Every moderation action creates a case with the moderator, target, reason and
 timestamp. Staff can look up and review cases, and add notes. This gives you an
 audit trail independent of Discord's own logs.
 
-Set a mod log with `,settings modlog #channel` and every case is posted there as a
+Set a mod log with `/moderation settings modlog #channel` and every case is posted there as a
 card. The case number in the moderator's reply links to that post. Under each
 post are buttons:
 
@@ -48,9 +48,9 @@ post are buttons:
   the case, or a server manager, can add evidence.
 - **History** shows the member's other cases.
 
-`,history @member` shows a member's cases a few per page: when, who, why, how
-long, the evidence, and a link to each case's post. `,case 42` shows one case,
-and `,proof add 42` adds evidence from a command.
+`/cases history @member` shows a member's cases a few per page: when, who, why, how
+long, the evidence, and a link to each case's post. `/cases case 42` shows one case,
+and `/cases proof add 42` adds evidence from a command.
 
 :::tip
 Pair moderation with [Logging](/guides/logging/) so bans, deletions and edits
@@ -62,10 +62,10 @@ are mirrored into a channel your staff can review.
 Give several safe roles in one batch:
 
 ```text
-,role all @Member @Events @Updates
-,role humans @Member @Events
-,role bots @BotRole
-,role all @Events @Updates remove
+/role all @Member @Events @Updates
+/role humans @Member @Events
+/role bots @BotRole
+/role all @Events @Updates remove
 ```
 
 A batch accepts up to ten distinct roles. A trailing `remove` removes all listed roles. Mentions, IDs and quoted role names are accepted; separate roles with spaces. Flanker validates every selected role before starting. Dangerous permissions cannot be granted through a mass command.

@@ -3,9 +3,9 @@ title: Embed and card builder
 description: Build embeds and Components V2 cards in Discord with buttons, no code or Studio needed.
 ---
 
-Run `,embed create (name)` (Manage Messages) and flanker posts the embed with
+Run `/embed create (name)` (Manage Messages) and flanker posts the embed with
 buttons under it. Every change shows up on the embed straight away and is
-saved under its name. For a Components V2 card, run `,card create (name)`.
+saved under its name. For a Components V2 card, run `/server-tools card create (name)`.
 Leave the name out and flanker picks one, like `embed1`.
 
 ## The buttons
@@ -30,13 +30,13 @@ builder fills them in with you while you edit.
 ## Using it
 
 ```
-,embed create rules
-,card create welcome-card
-,embed edit rules
-,embed send #rules rules
+/embed create rules
+/server-tools card create welcome-card
+/embed edit rules
+/embed send #rules rules
 ```
 
-`,embed edit (name)` and `,card edit (name)` reopen a saved one in the
+`/embed edit (name)` and `/server-tools card edit (name)` reopen a saved one in the
 builder.
 
 ## Slash commands
@@ -50,5 +50,5 @@ builder.
 
 The builder buttons work the same however you opened it. Saved embeds and cards work on buttons too, with `embed:rules` or
 `ephemeral:rules`. Something written as code with menus or role buttons
-can't open in the builder. Change it with `,embed create (name) (code)` or in
+can't open in the builder. Change it with `/embed create (name) (code)` or in
 [Studio](https://flanker.wtf/studio).

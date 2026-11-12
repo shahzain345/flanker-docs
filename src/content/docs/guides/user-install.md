@@ -16,7 +16,7 @@ Discord and server settings can restrict external application commands. If the c
 
 ## What you can use
 
-Supported personal roots include **afk**, **quote**, **media**, **math**, **convert**, **repost**, **Last.fm**, **family**, **skin**, **games** and **tools**, alongside help and profile lookups. Related actions sit together in feature groups, such as `/family pets list` and `/games chess`. Use the picker’s available subcommands rather than guessing prefix syntax in a slash field.
+Supported personal roots include **afk**, **quote**, **media**, **math**, **convert**, **repost**, **Last.fm**, **family**, **skin**, **games** and **tools**, alongside help and profile lookups. Related actions sit together in feature groups, such as `/family pets list` and `/games chess`. Use the picker’s available subcommands rather than typing a whole command into a slash field.
 
 ### AFK across your servers
 
@@ -48,7 +48,7 @@ For `/media caption`, fill in text and attach a file, supply an image URL or cho
 
 Some effects require a still image; reverse and speed require a GIF or video. File limits still apply. Only a small number of edits run at once, and unusually slow files may need to be shortened or reduced.
 
-The [typed slash reference](/guides/slash-commands/) shows actual command paths, required fields and whether each route supports profile installation. A prefix alias is not necessarily a slash-command name.
+The [typed slash reference](/guides/slash-commands/) shows actual command paths, required fields and whether each route supports profile installation. A command alias is not necessarily a slash-command name.
 
 ## What still needs a server installation
 

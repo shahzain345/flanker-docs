@@ -9,7 +9,7 @@ it. The channel is deleted automatically when it empties.
 
 ## Set it up
 
-1. Run `,voicemaster` to create the Join to Create channel and its category.
+1. Run `/voicemaster room access` to create the Join to Create channel and its category.
 2. Members join it to get their own room.
 3. Owners control their room with the VoiceMaster panel: rename, set a user
    limit, lock or hide it, and allow or reject specific people.

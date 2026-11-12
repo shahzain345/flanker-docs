@@ -12,7 +12,7 @@ and run invite-based rewards.
 - Per-member invite counts (joins, leaves, and net invites).
 - A server invite leaderboard.
 
-Use the invite commands (`,invites`) to view counts and the leaderboard. See the
+Use the invite commands (`/invites show`) to view counts and the leaderboard. See the
 [Logging, invites, levels reference](/commands/logging-invites-levels/).
 
 ## On the dashboard

@@ -7,7 +7,7 @@ Members can tell flanker their birthday, and it celebrates on the day.
 
 ## For members
 
-- Set a birthday with `,birthday` (see the [Personal commands](/commands/personal/)).
+- Set a birthday with `/personal birthday show` (see the [Personal commands](/commands/personal/)).
 - Members can remove their birthday at any time.
 
 ## For admins

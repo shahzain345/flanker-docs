@@ -19,20 +19,20 @@ minutes.
 
 ## Using commands
 
-flanker supports **slash commands**, **prefix commands** and the **dashboard**.
+flanker runs on **slash commands**, **mentions** and the **dashboard**.
 
-- The default prefix is `,`. For example, `,help` or `,ban @user`.
-- You can also mention the bot instead of the prefix.
-- Change the prefix with `,prefix set !` (see the [General commands](/commands/general/)).
+- Type `/` and pick a flanker command, for example `/help show` or `/ban`.
+- Or mention flanker before the command, for example `@flanker ban @user`.
+- Prefix commands (like `,ban`) were retired on 12 November 2026. flanker no longer answers them.
 
-The command index shows syntax **without** a prefix; copyable examples and setup guides use `,`. Replace it with your server’s prefix when needed. Parameters
-in `(round)` brackets are required; `[square]` brackets are optional.
+In the command reference, parameters in `(round)` brackets are required and
+`[square]` brackets are optional. Slash commands show them as named fields.
 
 ## Finding help in Discord
 
-- `,help` opens a browsable menu of every module.
-- `,help <module>` lists one module, for example `,help security`.
-- `,help <command>` shows exactly how a command works, its parameters, the
+- `/help show` opens a browsable menu of every module.
+- `/help module <module>` lists one module, for example `/help module security`.
+- `/help command <command>` shows exactly how a command works, its parameters, the
   permission it needs, and where to configure it on the dashboard.
 
 ## The dashboard
@@ -50,6 +50,6 @@ in with Discord, pick your server, and configure modules visually. See
 
 ## Slash commands
 
-Slash commands use Discord's native fields. For example, `/ban` requires a member picker and offers a reason and Silent switch. Roles and channels use pickers; counts use numeric fields; fixed actions use choices. Flanker replies to the interaction directly, without posting a prefix command first.
+Slash commands use Discord's native fields. For example, `/ban` requires a member picker and offers a reason and Silent switch. Roles and channels use pickers; counts use numeric fields; fixed actions use choices. Flanker replies to the interaction directly.
 
-Frequently used commands have their own slash names. The rest are grouped by category to fit Discord's command limits. Browse the slash menu for the available actions and options. The generic `/command name arguments` bridge has been removed. Slash and prefix commands keep the same permission, cooldown and security checks.
+Frequently used commands have their own slash names. The rest are grouped by category to fit Discord's command limits. Browse the slash menu for the available actions and options. The generic `/command name arguments` bridge has been removed. Slash and mention commands share the same permission, cooldown and security checks.

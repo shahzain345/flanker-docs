@@ -7,13 +7,13 @@ Valorant LFG is available to every server with flanker. There is no early-access
 
 ## Set up the board
 
-A manager with Manage Server runs `,lfg setup #valorant-lfg`. This posts a panel with Find teammates, Browse and Notifications. `,lfg panel` replaces the panel when needed.
+A manager with Manage Server runs `/party lfg setup #valorant-lfg`. This posts a panel with Find teammates, Browse and Notifications. `/party lfg panel` replaces the panel when needed.
 
 LFG supports Valorant only. Existing Minecraft, Roblox and Fortnite profile commands remain separate. Squad threads, game selection and game-routing commands have been removed.
 
 ## Create a party
 
-Click Find teammates or run `,lfg`. The form asks for:
+Click Find teammates or run `/party lfg show`. The form asks for:
 
 - **Mode:** Competitive, Unrated, Swiftplay, Spike Rush, Deathmatch, Team Deathmatch or Custom.
 - **Server:** for example Mumbai, Singapore, Frankfurt, EU or NA.
@@ -36,4 +36,4 @@ One active party per member per server, 20 active parties per server and one pos
 
 ## Notifications
 
-Use `,lfg notify on` or `,lfg notify off`. `,lfg notify valorant on/off` is also accepted. Notifications are opt-in DMs, limited to one per member every 15 minutes with at most 50 eligible subscribers checked per post. Closed DMs may prevent delivery. No roles are granted and no everyone ping is sent.
+Use `/party lfg notify on` or `/party lfg notify off`. `/party lfg notify valorant on/off` is also accepted. Notifications are opt-in DMs, limited to one per member every 15 minutes with at most 50 eligible subscribers checked per post. Closed DMs may prevent delivery. No roles are granted and no everyone ping is sent.

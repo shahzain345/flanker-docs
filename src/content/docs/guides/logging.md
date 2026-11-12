@@ -18,7 +18,7 @@ Logging covers these groups, each routable to its own channel:
 
 ## Setup
 
-Configure logging with `,help logging`, or visually on the
+Configure logging with `/help module logging`, or visually on the
 [dashboard](https://flanker.wtf/dashboard). You pick a channel per event group,
 and you can set a colour per channel and ignore specific users or channels.
 

@@ -31,11 +31,11 @@ Flanker needs the specific permissions for the actions you enable, such as View 
 ### With commands
 
 ```text
-,antinuke setup
-,antinuke config
+/antinuke setup
+/antinuke config
 ```
 
-The setup command offers Beginner and Advanced paths. Config shows enabled modules, thresholds, punishments, admins and trusted bots. Use your server’s prefix if it differs from `,`.
+The setup command offers Beginner and Advanced paths. Config shows enabled modules, thresholds, punishments, admins and trusted bots. Mentioning flanker before the command works too.
 
 ## 3. Understand a module
 
@@ -44,7 +44,7 @@ A module has an enabled state, a threshold and a punishment. Thresholds are limi
 <SettingsPreview title="Example: ban protection" caption="Illustrative configuration, not a universal recommendation." rows={[{label:'Ban protection',value:'On'},{label:'Threshold',value:'3 actions',hint:'An example limit. Choose limits for your server’s moderation activity.'},{label:'Punishment',value:'Ban'},{label:'Count command actions',value:'Configurable',hint:'The --command option also counts bans and kicks made through bot commands.'}]} />
 
 ```text
-,antinuke ban on --threshold 3 --do ban
+/antinuke run ban on --threshold 3 --do ban
 ```
 
 Review the [complete module syntax](/commands/security/#antinuke) before changing thresholds. A lower threshold alone does not guarantee containment before another action.
@@ -57,9 +57,9 @@ Review the [complete module syntax](/commands/security/#antinuke) before changin
 - **Flanker team site admins** have an explicitly separate dashboard exception. Ordinary Flanker Admin roles do not gain it.
 
 ```text
-,antinuke trusted
-,antinuke admin list
-,antinuke backupowner @trusted-person
+/antinuke trusted show
+/antinuke admin list
+/antinuke backupowner @trusted-person
 ```
 
 The last command changes your configuration. The first two inspect it. Never use a broad whitelist simply to silence an unexplained alert.
@@ -69,8 +69,8 @@ The last command changes your configuration. The first two inspect it. Never use
 With antinuke and ban protection enabled, **strict native-ban protection** can start panic on the first unknown native ban, even when the ban is legitimate. Known Flanker ban requests are excluded. Review this tradeoff before enabling it.
 
 ```text
-,antinuke panic
-,antinuke panic nativebans on
+/antinuke panic show
+/antinuke panic nativebans on
 ```
 
 <SetupFlow title="During panic" caption="Panic is an emergency state, not the same as antiraid lockdown." steps={[{title:'Contain',detail:'Antinuke limits drop to one and dangerous permissions on manageable roles are paused.'},{title:'Pause bulk work',detail:'Long-running role and other bulk tasks wait while security responds.'},{title:'Owner recovery',detail:'The owner ends panic; failed role restoration is reported and saved for a later retry.'}]} />
@@ -78,20 +78,20 @@ With antinuke and ban protection enabled, **strict native-ban protection** can s
 Only the owner ends panic, with backup-owner approval when configured:
 
 ```text
-,antinuke panic end
+/antinuke panic end
 ```
 
 Panic ends even if some roles cannot be restored. Flanker reports those roles and preserves their recovery data; it does not keep the server in panic solely because one restoration failed. Fix the role hierarchy or missing permissions, then retry saved recovery:
 
 ```text
-,antinuke panic recover
+/antinuke panic recover
 ```
 
 Saved permission pauses survive restarts. In-memory bulk tasks do not necessarily survive a bot restart.
 
 ## Verify your setup
 
-1. Inspect `,antinuke config` and the dashboard’s protection state.
+1. Inspect `/antinuke config` and the dashboard’s protection state.
 2. Confirm Flanker’s role is above every role it must manage.
 3. Verify the configured log channel is visible and writable by Flanker.
 4. Review trusted bots and antinuke admins. Confirm the backup owner understands approval requests.
@@ -105,6 +105,6 @@ Saved permission pauses survive restarts. In-memory bulk tasks do not necessaril
 
 **An approval is pending:** the backup owner must approve qualifying changes. Turning a setting off is not a way to bypass recovery.
 
-**You want to start over:** `,antinuke reset` is owner-only, disables protection and follows backup-owner approval rules when configured. End panic first. Saved failed-role recovery is retained. A reset is not a recovery command.
+**You want to start over:** `/antinuke reset` is owner-only, disables protection and follows backup-owner approval rules when configured. End panic first. Saved failed-role recovery is retained. A reset is not a recovery command.
 
 Next: [set up antiraid](/guides/antiraid/) or browse [all security commands](/commands/security/).

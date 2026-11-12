@@ -16,7 +16,7 @@ private ticket channel, with staff handling and transcripts.
   Discord). Images posted in the ticket are kept with it. Transcripts are
   deleted automatically after one year.
 
-See `,help ticket` and the
+See `/help module ticket` and the
 [VoiceMaster, tickets, applications commands](/commands/voicemaster-tickets-applications/).
 
 ## Applications
@@ -34,7 +34,7 @@ form builder and a live preview.
 
 Expand a ticket option on the dashboard and select any required **Managing roles** and **View-only roles**. Each option can use several roles in either list. Managers handle the ticket; viewers can read without replying or gaining ticket-management commands. A role selected in both lists is treated as a manager. Existing Support roles remain compatible.
 
-The command equivalent is `,ticket option set Support 1 manage @Support @SeniorSupport` or `,ticket option set Support 1 view @Observers @Auditors`. Use `none` to clear a list. These channel permissions apply to newly opened tickets; changing an option does not rewrite existing ticket channels.
+The command equivalent is `@flanker ticket option set Support 1 manage @Support @SeniorSupport` or `@flanker ticket option set Support 1 view @Observers @Auditors`. Use `none` to clear a list. These channel permissions apply to newly opened tickets; changing an option does not rewrite existing ticket channels.
 
 Transcripts use the same Discord-style typography and message layout as dashboard previews. They include attachments, reply references and code formatting without granting public access to private tickets.
 

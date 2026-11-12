@@ -135,7 +135,7 @@ def registry():
 
 
 def render(cat, order):
-    lines = ["---", f"title: {cat['name']} commands", f"description: Flanker {cat['name'].lower()} commands, syntax, permissions and examples.", f"sidebar:\n  order: {order}", "---", "", "import CommandReference from '../../../components/CommandReference.astro';", "import commands from '../../../data/commands.json';", "", "Use your server's prefix (default `,`) or mention Flanker. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its behavior, permissions and example.", ""]
+    lines = ["---", f"title: {cat['name']} commands", f"description: Flanker {cat['name'].lower()} commands, syntax, permissions and examples.", f"sidebar:\n  order: {order}", "---", "", "import CommandReference from '../../../components/CommandReference.astro';", "import commands from '../../../data/commands.json';", "", "Type `/` and pick the slash command, or mention Flanker before the command. `(round)` parameters are required; `[square]` parameters are optional. Expand a syntax row for its slash command, permissions and example.", ""]
     for cmd in cat['cmds']:
         lines.extend([f"## {cmd['name']}", "", f"<CommandReference command={{commands.find(command => command.name === {json.dumps(cmd['name'])})}} />", ""])
     return "\n".join(lines)

@@ -53,7 +53,7 @@ pick your server, and choose the section:
 | **Tags** | Custom tag messages |
 | **Custom commands** | Custom command builder |
 | **Music** | Music settings and presets |
-| **Utility** | Prefix, enabling/disabling commands and modules |
+| **Utility** | Enabling/disabling commands and modules |
 
 Any command whose reference entry shows a **Configure on the dashboard** line
 can be set up in the matching section above instead of by command.
@@ -92,4 +92,4 @@ Open **Moderation > Fake permissions**. Antinuke admins can use this page even w
 
 Owner-level members and antinuke admins can also grant fake Administrator, Manage Server and Manage Roles. Flanker Admins can remove those permissions but cannot grant them. Removing every fake permission requires owner-level or antinuke-admin trust and confirmation.
 
-The same rules apply to slash, prefix and mention commands. For example, use `fakepermissions add @Mods ban_members, kick_members` with your server prefix, or `@flanker fakepermissions add @Mods ban_members, kick_members`. Find the current typed slash equivalents in the [command reference](/commands/security/#fakepermissions). Real or fake Administrator alone does not grant access to this configuration.
+The same rules apply to slash and mention commands. For example, use `/fakepermissions add` or `@flanker fakepermissions add @Mods ban_members, kick_members`. Find the current typed slash equivalents in the [command reference](/commands/security/#fakepermissions). Real or fake Administrator alone does not grant access to this configuration.

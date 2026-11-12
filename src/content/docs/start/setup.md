@@ -1,6 +1,6 @@
 ---
 title: Invite & setup
-description: Permissions flanker needs, how to set the prefix, and the fastest way to configure a server.
+description: Permissions flanker needs, how to run commands, and the fastest way to configure a server.
 sidebar:
   order: 2
 ---
@@ -24,22 +24,21 @@ Role hierarchy still applies. flanker can only act on roles and members below
 its own highest role, so keep flanker's role near the top.
 :::
 
-## Prefix
+## Running commands
 
-The default prefix is `,`. Change it per server:
+flanker uses **slash commands**. Type `/` in any channel and pick a flanker
+command; its fields use Discord's member, role and channel pickers.
 
-- `,prefix` shows the current prefix.
-- `,prefix set !` changes it (up to 5 characters).
-- `,prefix reset` restores the default.
-
-You can always mention the bot instead of using the prefix.
+You can also mention flanker and type the command after it, like
+`@flanker ban @user`. Prefix commands such as `,ban` were retired on
+12 November 2026.
 
 ## Fastest setup
 
-1. **Lock down security first.** Run `,antinuke setup` (beginner mode applies
-   the recommended protection in one step). Then `,antiraid` to tune raid
+1. **Lock down security first.** Run `/antinuke setup` (beginner mode applies
+   the recommended protection in one step). Then open `/setup` and pick **Antiraid** to tune raid
    thresholds. See [Security](/guides/security/).
-2. **Turn on logging** so you have an audit trail: `,help logging` or configure
+2. **Turn on logging** so you have an audit trail: `/help module logging` or configure
    it on the dashboard. See [Logging](/guides/logging/).
 3. **Set up member flow**: a welcome message and autoroles. See
    [Welcome & messages](/guides/welcome/).
@@ -51,18 +50,18 @@ Everything above can also be done on the
 
 ## Setup panels
 
-Run `,setup` (Manage Server) to see everything flanker can do and pick a
-module. Most modules also open their panel from the bare command, like
-`,autorole` or `,starboard panel`.
+Run `/setup show` (Manage Server) to see everything flanker can do and pick a
+module. Every module's settings can be changed from its panel: lists,
+roles, channels, messages and limits included.
 
 A panel lists each setting on one line with what it's set to now. On/off
-settings have a **Turn on**/**Turn off** button right there. Press **Edit**
-(or **Set up**) on any other line to open that setting with its menu or
-form, then **Back** to return. Every change runs the matching command as
+settings have a switch right there. Press the pencil (or **View** for lists)
+on any other line to open that setting with its menu or form, then **Back**
+to return. Every change runs the matching command as
 you, so the usual permission checks apply.
 
 ## Staff and access
 
 flanker separates "who can run a command" from Discord's own permissions where
-it makes sense (for example antinuke admins). Use `,help access` and
-`,help elevate` to see how to grant staff access to specific commands.
+it makes sense (for example antinuke admins). Use `/help command access` and
+`/help command elevate` to see how to grant staff access to specific commands.

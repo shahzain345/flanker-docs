@@ -21,11 +21,13 @@ Messages in Threads** there too.
   pop-up before the ticket opens. The answers are the first message.
 - Support roles of up to 25 people are added to each new ticket. Bigger teams
   use **Join** on the staff list instead, so a ticket never pulls in hundreds
-  of people. Anyone with Manage Threads in the ticket channel can also see
+  of people. They're added quietly, without an "added to the thread" line for
+  each person. Anyone with Manage Threads in the ticket channel can also see
   every ticket.
 - The thread name shows its state: a green dot when open, yellow when claimed,
-  and a lock when closed, followed by the number and the member, like
-  `0012 · sam`.
+  and a lock when closed, then the type's short name, the number and the
+  member, like `support-0012 · sam` or `purchase-0013 · alex`. Change the short
+  name in `/setup ticket` under the ticket type.
 - Staff can claim, add or remove people, and close. Turning on **Claimer only**
   removes the rest of the support team from a ticket once someone claims it.
 - Closing locks and archives the thread. The member can still read it, and

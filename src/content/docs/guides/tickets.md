@@ -5,7 +5,7 @@ description: Support tickets with transcripts, and staff applications.
 
 ## Tickets
 
-Tickets open one of two ways. Pick it in `/setup ticket`, Ticket settings,
+Tickets open one of two ways. Pick it in `/setup show`, Ticket settings,
 **Tickets open as**, or on the dashboard:
 
 - **Private threads** (the default). Each ticket is a private thread in your
@@ -22,7 +22,7 @@ Tickets open one of two ways. Pick it in `/setup ticket`, Ticket settings,
 
 Everything below works the same in both, except where it says threads.
 
-- Post a panel with a button or menu for each ticket type. Run `/setup ticket`
+- Post a panel with a button or menu for each ticket type. Run `/ticket panels show`
   to create panels and edit every ticket type from Discord, or use the
   [dashboard](https://flanker.wtf/dashboard).
 - Each type opens its threads in its own channel, or the panel's channel if you
@@ -37,7 +37,7 @@ Everything below works the same in both, except where it says threads.
 - The thread name shows its state: a green dot when open, yellow when claimed,
   and a lock when closed, then the type's short name, the number and the
   member, like `support-0012 · sam` or `purchase-0013 · alex`. Change the short
-  name in `/setup ticket` under the ticket type.
+  name in `/ticket panels show` under the ticket type.
 - Staff can claim, add or remove people, and close. Turning on **Claimer only**
   removes the rest of the support team from a ticket once someone claims it.
 - Closing locks and archives the thread. The member can still read it, and
@@ -55,11 +55,11 @@ Members can right-click any message (or long-press on mobile), choose
 **Apps**, then **Report to staff**. They can add a reason, and flanker opens a
 ticket with a link to the message, who sent it and what it said. Reports open
 the first enabled ticket type unless you pick one with **Use for reports** in
-`/setup ticket`.
+`/ticket panels show`.
 
 ### Staff ticket list
 
-Pick a staff channel in `/setup ticket`, under Ticket settings, and flanker
+Pick a staff channel in `/setup show`, under Ticket settings, and flanker
 keeps one message there listing the open tickets. Tickets waiting on a staff
 reply come first, then unclaimed, then claimed. Each one has a **Join** button
 that adds you to the thread.
@@ -91,7 +91,7 @@ form builder and a live preview.
 
 ## Support roles
 
-Each ticket type can have several support roles. Pick them in `/setup ticket`
+Each ticket type can have several support roles. Pick them in `/ticket panels show`
 or on the dashboard under **Managing roles**. Changing them affects new
 tickets; people already in a ticket stay in it.
 

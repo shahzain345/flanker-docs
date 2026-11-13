@@ -5,12 +5,22 @@ description: Support tickets with transcripts, and staff applications.
 
 ## Tickets
 
-Every ticket is a **private thread** in your ticket channel. Only the member,
-your support team and flanker can see it. flanker never creates a channel or
-edits permissions for a ticket, so it needs only these in the ticket channel:
-View Channel, Send Messages in Threads, Create Private Threads, Manage Threads,
-Read Message History, Embed Links and Attach Files. Members need **Send
-Messages in Threads** there too.
+Tickets open one of two ways. Pick it in `/setup ticket`, Ticket settings,
+**Tickets open as**, or on the dashboard:
+
+- **Private threads** (the default). Each ticket is a private thread in your
+  ticket channel. Only the member, your support team and flanker can see it.
+  flanker never creates a channel or edits permissions for a ticket, so it
+  needs only these in the ticket channel: View Channel, Send Messages in
+  Threads, Create Private Threads, Manage Threads, Read Message History, Embed
+  Links and Attach Files. flanker lets members send messages in threads there
+  itself.
+- **Channels**. Each ticket gets its own private channel, like `purchase-0013`,
+  in the **Ticket category** you pick. flanker needs **Manage Channels** for
+  this. Servers that used ticket channels before threads arrived stay on
+  channels.
+
+Everything below works the same in both, except where it says threads.
 
 - Post a panel with a button or menu for each ticket type. Run `/setup ticket`
   to create panels and edit every ticket type from Discord, or use the

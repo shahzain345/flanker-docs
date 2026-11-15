@@ -8396,9 +8396,9 @@
         ]
       },
       {
-        "syntax": "stafftasks points",
+        "syntax": "stafftasks points [@member] [today/week/month/all]",
         "perm": "-",
-        "desc": "All-time points from finished periods, with a paged leaderboard and selected member total.",
+        "desc": "A member's points today, this week, this month and all time, with a leaderboard for each. Includes the current period so far.",
         "ex": "",
         "slash": [
           [
@@ -15008,7 +15008,7 @@
     "dash": "/tags",
     "perm": "-",
     "desc": [
-      "The server's own text commands. Any message works: text, embed or card. Once made, `,name` sends it."
+      "The server's own text commands. Any message works: text, embed or card. Once made, `/server-tools tags run` sends it."
     ],
     "subs": [
       {

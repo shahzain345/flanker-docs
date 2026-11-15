@@ -24324,15 +24324,48 @@
   },
   {
     "command": "stafftasks",
-    "syntax": "stafftasks points",
+    "syntax": "stafftasks points [@member] [today/week/month/all]",
     "path": [
       "stafftasks",
       "points"
     ],
-    "description": "All-time points from finished periods, with a paged leaderboard and selected member total.",
+    "description": "A member's points today, this week, this month and all time, with a leaderboard for each. ",
     "portable": false,
-    "options": [],
-    "details": "All-time points from finished periods, with a paged leaderboard and selected member total.",
+    "options": [
+      {
+        "type": 6,
+        "name": "member",
+        "description": "@member",
+        "required": false
+      },
+      {
+        "type": 3,
+        "name": "period",
+        "description": "today/week/month/all",
+        "required": false,
+        "max_length": 4000,
+        "min_length": 1,
+        "choices": [
+          {
+            "name": "today",
+            "value": "today"
+          },
+          {
+            "name": "week",
+            "value": "week"
+          },
+          {
+            "name": "month",
+            "value": "month"
+          },
+          {
+            "name": "all",
+            "value": "all"
+          }
+        ]
+      }
+    ],
+    "details": "A member's points today, this week, this month and all time, with a leaderboard for each. Includes the current period so far.",
     "aliases": [
       "stafftask",
       "quota",

@@ -8373,7 +8373,7 @@
     "subs": [
       {
         "syntax": "stafftasks [@member]",
-        "perm": "-",
+        "perm": "Staff task roles or Manage Server",
         "desc": "Interactive Progress, Points and History views, with member selection and refresh.",
         "ex": "",
         "slash": [
@@ -8397,7 +8397,7 @@
       },
       {
         "syntax": "stafftasks points [@member] [today/week/month/all]",
-        "perm": "-",
+        "perm": "Staff task roles or Manage Server",
         "desc": "A member's points today, this week, this month and all time, with a leaderboard for each. Includes the current period so far.",
         "ex": "",
         "slash": [
@@ -8409,7 +8409,7 @@
       },
       {
         "syntax": "stafftasks history",
-        "perm": "-",
+        "perm": "Staff task roles or Manage Server",
         "desc": "Browse completed periods, select saved member results and open posted reports.",
         "ex": "",
         "slash": [
